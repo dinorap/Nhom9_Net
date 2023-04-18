@@ -1,0 +1,19 @@
+﻿<Window x:Class="NHOM9.frmLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NHOM9"
+        mc:Ignorable="d"
+        Title="Đăng nhập" Height="350" Width="400">
+    <Grid>
+        <Label Content="Tên tài khoản:" HorizontalAlignment="Left" Margin="53,142,0,0" VerticalAlignment="Top"/>
+        <Label Content="Đăng Nhập" HorizontalAlignment="Center" Margin="0,75,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+        <Label Content="Mật Khẩu:" HorizontalAlignment="Left" Margin="53,192,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="150,146,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="149"/>
+        <TextBox HorizontalAlignment="Left" Margin="150,196,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="149"/>
+        <Button Content="Đăng nhập" HorizontalAlignment="Left" Margin="95,251,0,0" VerticalAlignment="Top" Width="94" Click="Button_Click"/>
+        <Button Content="Thoát" HorizontalAlignment="Left" Margin="235,251,0,0" VerticalAlignment="Top" Width="94" Click="Button_Click_1"/>
+
+    </Grid>
+</Window>
