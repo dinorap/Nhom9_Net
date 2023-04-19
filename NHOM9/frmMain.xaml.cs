@@ -23,5 +23,10 @@ namespace NHOM9
         {
             InitializeComponent();
         }
+
+        private void mi_thoat_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

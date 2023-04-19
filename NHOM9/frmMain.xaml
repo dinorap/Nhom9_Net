@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NHOM9"
         mc:Ignorable="d"
-        Title="frmMain" Height="450" Width="800">
+        Title="PHAN MEM QUAN LI NHAN SU" Height="450" Width="800">
     <Grid>
-        
+        <Image Source="/20230416_193727.jpg" Stretch="Fill"/>
+        <Menu Margin="0,0,0,391">
+            <MenuItem Header="Danh muc" Width="69" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Header="Chuc vu"/>
+                <MenuItem Header="Phong ban"/>
+                <MenuItem Header="Du an"/>
+            </MenuItem>
+            <MenuItem x:Name="mi_QLHS" Header="Quan li ho so" Width="86" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Header="Ho so nhan vien"/>
+                <MenuItem Header="Tim kien thong tin nhan vien"/>
+            </MenuItem>
+            <MenuItem x:Name="mi_QLHT" Header="Quan li he thong" Width="104" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                <MenuItem Header="Quan li tai khoan"/>
+                <MenuItem Header="Bang thong ke"/>
+            </MenuItem>
+            <MenuItem x:Name="mi_thoat" Header="Thoat" Width="47" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Menu>
     </Grid>
 </Window>
