@@ -7,22 +7,22 @@
         mc:Ignorable="d"
         Title="PHAN MEM QUAN LI NHAN SU" Height="450" Width="800">
     <Grid>
-        <Image Source="/20230416_193727.jpg" Stretch="Fill"/>
+        <Image Source="hinhanh/20230416_193727.jpg" Stretch="Fill"/>
         <Menu Margin="0,0,0,391">
             <MenuItem Header="Danh muc" Width="69" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <MenuItem Header="Chuc vu"/>
                 <MenuItem Header="Phong ban"/>
                 <MenuItem Header="Du an"/>
             </MenuItem>
-            <MenuItem x:Name="mi_QLHS" Header="Quan li ho so" Width="86" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <MenuItem Header="Ho so nhan vien"/>
-                <MenuItem Header="Tim kien thong tin nhan vien"/>
+            <MenuItem x:Name="mi_QLHS" Header="Quan li ho so" Width="86" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                <MenuItem Header="Ho so nhan vien" IsCheckable="true"/>
+                <MenuItem x:Name="mi_TimKiem" Header="Tim kien thong tin nhan vien" IsCheckable="true" Click="mi_TimKiem_Click"/>
             </MenuItem>
             <MenuItem x:Name="mi_QLHT" Header="Quan li he thong" Width="104" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                <MenuItem Header="Quan li tai khoan"/>
+                <MenuItem x:Name="mi_QLTK" Header="Quan li tai khoan" Click="mi_QLTK_Click"/>
                 <MenuItem Header="Bang thong ke"/>
             </MenuItem>
-            <MenuItem x:Name="mi_thoat" Header="Thoat" Width="47" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <MenuItem x:Name="mi_thoat" Header="Thoat" Width="47" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center"  />
         </Menu>
     </Grid>
 </Window>

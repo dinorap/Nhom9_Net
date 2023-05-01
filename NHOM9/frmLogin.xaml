@@ -10,10 +10,10 @@
         <Label Content="Tên tài khoản:" HorizontalAlignment="Left" Margin="53,142,0,0" VerticalAlignment="Top"/>
         <Label Content="Đăng Nhập" HorizontalAlignment="Center" Margin="0,75,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
         <Label Content="Mật Khẩu:" HorizontalAlignment="Left" Margin="53,192,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="150,146,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="149"/>
-        <TextBox HorizontalAlignment="Left" Margin="150,196,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="txtTenTKhoan" HorizontalAlignment="Left" Margin="150,146,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="149"/>
         <Button Content="Đăng nhập" HorizontalAlignment="Left" Margin="95,251,0,0" VerticalAlignment="Top" Width="94" Click="Button_Click"/>
         <Button Content="Thoát" HorizontalAlignment="Left" Margin="235,251,0,0" VerticalAlignment="Top" Width="94" Click="Button_Click_1"/>
+        <PasswordBox x:Name="txtMatKhau" HorizontalAlignment="Left" Margin="150,200,0,0" VerticalAlignment="Top" Width="149"/>
 
     </Grid>
 </Window>

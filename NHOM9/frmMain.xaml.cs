@@ -28,5 +28,19 @@ namespace NHOM9
         {
             this.Close();
         }
+
+        private void mi_TimKiem_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            frmTimkiem TK = new frmTimkiem();
+            TK.Show();
+        }
+
+        private void mi_QLTK_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            frmTaiKhoan TK = new frmTaiKhoan();
+            TK.Show();
+        }
     }
 }

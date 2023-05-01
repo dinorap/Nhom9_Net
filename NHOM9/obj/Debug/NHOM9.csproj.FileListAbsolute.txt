@@ -20,3 +20,7 @@ C:\Users\FPT\Desktop\Nhom9_Net\NHOM9\bin\Debug\Syncfusion.Shared.WPF.xml
 C:\Users\FPT\Desktop\Nhom9_Net\NHOM9\obj\Debug\NHOM9.csproj.CopyComplete
 C:\Users\FPT\Desktop\Nhom9_Net\NHOM9\obj\Debug\frmMain.g.cs
 C:\Users\FPT\Desktop\Nhom9_Net\NHOM9\obj\Debug\frmMain.baml
+C:\Users\FPT\Desktop\Nhom9_Net\NHOM9\obj\Debug\frmTimkiem.g.cs
+C:\Users\FPT\Desktop\Nhom9_Net\NHOM9\obj\Debug\frmTimkiem.baml
+C:\Users\FPT\Desktop\Nhom9_Net\NHOM9\obj\Debug\frmTaiKhoan.g.cs
+C:\Users\FPT\Desktop\Nhom9_Net\NHOM9\obj\Debug\frmTaiKhoan.baml
