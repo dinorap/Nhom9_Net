@@ -10,7 +10,7 @@
         <Label Content="NHAP HO TEN NHAN VIEN" HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" Width="156"/>
         <TextBox x:Name="txtTimKiem" HorizontalAlignment="Left" Margin="261,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btTimKiem" Content="TIm Kiem" HorizontalAlignment="Left" Margin="442,102,0,0" VerticalAlignment="Top" Width="111" Click="btTimKiem_Click"/>
-        <DataGrid x:Name="dgvMain" d:ItemsSource="{d:SampleData ItemCount=0}" Margin="75,145,75,57"/>
+        <DataGrid x:Name="dgvMain" Margin="75,145,75,57"/>
         <Button x:Name="btThoat" Content="Thoat" HorizontalAlignment="Left" Margin="655,396,0,0" VerticalAlignment="Top" Width="70"/>
 
     </Grid>

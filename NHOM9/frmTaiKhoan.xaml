@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="frmTaiKhoan" Height="400" Width="800" Loaded="Window_Loaded">
     <Grid Margin="0,0,0,-6">
-        <DataGrid x:Name="dgvMain" d:ItemsSource="{d:SampleData ItemCount=0}" Margin="305,23,23,178" SelectionChanged="dgvMain_SelectionChanged"/>
+        <DataGrid x:Name="dgvMain" Margin="305,23,23,178" SelectionChanged="dgvMain_SelectionChanged"/>
         <Label Content="Tai khoan" HorizontalAlignment="Left" Margin="23,41,0,0" VerticalAlignment="Top" Width="96"/>
         <Label Content="Mat khau" HorizontalAlignment="Left" Margin="23,114,0,0" VerticalAlignment="Top" Width="96"/>
         <Label Content="Loai tai khoan" HorizontalAlignment="Left" Margin="23,191,0,0" VerticalAlignment="Top" Width="96"/>

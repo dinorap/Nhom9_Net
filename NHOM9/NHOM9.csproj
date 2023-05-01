@@ -8,12 +8,13 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>NHOM9</RootNamespace>
     <AssemblyName>NHOM9</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -61,6 +62,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="frmChucVu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmDuAn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="frmLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -70,6 +79,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Data\TruyXuatCSDL.cs" />
+    <Compile Include="frmChucVu.xaml.cs">
+      <DependentUpon>frmChucVu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDuAn.xaml.cs">
+      <DependentUpon>frmDuAn.xaml</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.xaml.cs">
       <DependentUpon>frmLogin.xaml</DependentUpon>
     </Compile>
@@ -77,7 +92,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="frmNhanVien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmPhongBan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="frmTaiKhoan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmThongKe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -90,8 +117,17 @@
     <Compile Include="frmMain.xaml.cs">
       <DependentUpon>frmMain.xaml</DependentUpon>
     </Compile>
+    <Compile Include="frmNhanVien.xaml.cs">
+      <DependentUpon>frmNhanVien.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPhongBan.xaml.cs">
+      <DependentUpon>frmPhongBan.xaml</DependentUpon>
+    </Compile>
     <Compile Include="frmTaiKhoan.xaml.cs">
       <DependentUpon>frmTaiKhoan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmThongKe.xaml.cs">
+      <DependentUpon>frmThongKe.xaml</DependentUpon>
     </Compile>
     <Compile Include="frmTimkiem.xaml.cs">
       <DependentUpon>frmTimkiem.xaml</DependentUpon>

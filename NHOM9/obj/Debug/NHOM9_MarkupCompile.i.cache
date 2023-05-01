@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\FPT\Desktop\Nhom9_Net\NHOM9\obj\Debug\
+C:\Users\dminh\Desktop\nhom9\Nhom9_Net\NHOM9\obj\Debug\
 NHOM9
 none
 false
 DEBUG;TRACE
-C:\Users\FPT\Desktop\Nhom9_Net\NHOM9\App.xaml
-4-475087897
+C:\Users\dminh\Desktop\nhom9\Nhom9_Net\NHOM9\App.xaml
+9880080490
 
-10-738325582
-15-1121149762
-frmLogin.xaml;frmMain.xaml;frmTaiKhoan.xaml;frmTimkiem.xaml;
+151031170619
+151238662980
+frmChucVu.xaml;frmDuAn.xaml;frmLogin.xaml;frmMain.xaml;frmNhanVien.xaml;frmPhongBan.xaml;frmTaiKhoan.xaml;frmThongKe.xaml;frmTimkiem.xaml;
 
 True
 
