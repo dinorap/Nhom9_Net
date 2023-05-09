@@ -23,7 +23,7 @@ namespace WFB4
     internal class TruyXuatCSDL
     {
 
-        private static string DuongDan = "Data Source=DESKTOP-PC29RK5;Initial Catalog=QLNhanSu2;Integrated Security=True";
+        private static string DuongDan = "Data Source=ASUS_HHHHH;Initial Catalog=QLNhanSu1;Integrated Security=True";
         private static SqlConnection TaoKetNoi()
         {   
                 return new SqlConnection(DuongDan);

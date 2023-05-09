@@ -38,7 +38,7 @@ namespace NHOM9
                 if (kq.ToString() == "1")
                 {
                     MessageBox.Show("Chào mừng user !!", "Thông báo");
-                    frmMain main = new frmMain();
+                    frmMain main = new frmMain(kq.ToString());
                     main.Show();
                     this.Hide();
                 }
@@ -46,7 +46,7 @@ namespace NHOM9
                 {
                     MessageBox.Show("Chào mừng Admin !!", "Thông báo");
 
-                    frmMain main = new frmMain();
+                    frmMain main = new frmMain(kq.ToString());
                     main.Show();
                     this.Hide();
 

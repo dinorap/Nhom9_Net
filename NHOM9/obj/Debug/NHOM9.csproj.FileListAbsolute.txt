@@ -59,3 +59,13 @@ C:\Users\dminh\Desktop\nhom9\Nhom9_Net\NHOM9\obj\Debug\frmNhanVien.g.cs
 C:\Users\dminh\Desktop\nhom9\Nhom9_Net\NHOM9\obj\Debug\frmPhongBan.g.cs
 C:\Users\dminh\Desktop\nhom9\Nhom9_Net\NHOM9\obj\Debug\frmNhanVien.baml
 C:\Users\dminh\Desktop\nhom9\Nhom9_Net\NHOM9\obj\Debug\frmPhongBan.baml
+C:\Users\FPT\Desktop\Nhom9_Net\NHOM9\obj\Debug\frmChucVu.g.cs
+C:\Users\FPT\Desktop\Nhom9_Net\NHOM9\obj\Debug\frmDuAn.g.cs
+C:\Users\FPT\Desktop\Nhom9_Net\NHOM9\obj\Debug\frmNhanVien.g.cs
+C:\Users\FPT\Desktop\Nhom9_Net\NHOM9\obj\Debug\frmPhongBan.g.cs
+C:\Users\FPT\Desktop\Nhom9_Net\NHOM9\obj\Debug\frmThongKe.g.cs
+C:\Users\FPT\Desktop\Nhom9_Net\NHOM9\obj\Debug\frmChucVu.baml
+C:\Users\FPT\Desktop\Nhom9_Net\NHOM9\obj\Debug\frmDuAn.baml
+C:\Users\FPT\Desktop\Nhom9_Net\NHOM9\obj\Debug\frmNhanVien.baml
+C:\Users\FPT\Desktop\Nhom9_Net\NHOM9\obj\Debug\frmPhongBan.baml
+C:\Users\FPT\Desktop\Nhom9_Net\NHOM9\obj\Debug\frmThongKe.baml

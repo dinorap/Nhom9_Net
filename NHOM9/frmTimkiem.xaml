@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NHOM9"
         mc:Ignorable="d"
-        Title="frmTimkiem" Height="450" Width="800">
-    <Grid>
-        <Label Content="NHAP HO TEN NHAN VIEN" HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" Width="156"/>
-        <TextBox x:Name="txtTimKiem" HorizontalAlignment="Left" Margin="261,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btTimKiem" Content="TIm Kiem" HorizontalAlignment="Left" Margin="442,102,0,0" VerticalAlignment="Top" Width="111" Click="btTimKiem_Click"/>
-        <DataGrid x:Name="dgvMain" Margin="75,145,75,57"/>
-        <Button x:Name="btThoat" Content="Thoat" HorizontalAlignment="Left" Margin="655,396,0,0" VerticalAlignment="Top" Width="70"/>
-
+        Title="TÌM KIẾM NHÂN VIÊN" Height="350" Width="500">
+    <Grid Margin="0,0,0,-6">
+        <Label Content="NHẬP HỌ TÊN NHÂN VIÊN" HorizontalAlignment="Left" Margin="149,20,0,0" VerticalAlignment="Top" Width="156"/>
+        <TextBox x:Name="txtTimKiem" HorizontalAlignment="Left" Margin="94,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btTimKiem" Content="Tìm Kiếm" HorizontalAlignment="Left" Margin="250,58,0,0" VerticalAlignment="Top" Width="111" Click="btTimKiem_Click"/>
+        <DataGrid x:Name="dgvMain" Margin="25,110,10,65"/>
+        <Button x:Name="btTroVe" Content="Trở về" HorizontalAlignment="Left" Margin="378,280,0,0" VerticalAlignment="Top" Width="70" Click="btTroVe_Click"/>
+        <Label Content="Danh sách nhân viên tìm kiếm:" HorizontalAlignment="Left" Margin="25,78,0,0" VerticalAlignment="Top" Width="179"/>
     </Grid>
 </Window>

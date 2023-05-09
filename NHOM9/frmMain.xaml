@@ -5,24 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NHOM9"
         mc:Ignorable="d"
-        Title="PHAN MEM QUAN LI NHAN SU" Height="450" Width="800">
+        Title="PHẦN MỀM QUẢN LÍ NHÂN SỰ" Height="450" Width="800">
     <Grid>
         <Image Source="hinhanh/20230416_193727.jpg" Stretch="Fill"/>
         <Menu Margin="0,0,0,391">
-            <MenuItem Header="Danh muc" Width="69" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <MenuItem Header="Chuc vu"/>
-                <MenuItem Header="Phong ban"/>
-                <MenuItem Header="Du an"/>
+            <MenuItem x:Name="mniDanhMuc" Header="Danh mục" Width="69" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Header="Chức vụ" Click="MenuItem_Click"/>
+                <MenuItem Header="Phòng ban"/>
+                <MenuItem Header="Dự án" Click="MenuItem_Click_1"/>
             </MenuItem>
-            <MenuItem x:Name="mi_QLHS" Header="Quan li ho so" Width="86" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                <MenuItem Header="Ho so nhan vien" IsCheckable="true"/>
-                <MenuItem x:Name="mi_TimKiem" Header="Tim kien thong tin nhan vien" IsCheckable="true" Click="mi_TimKiem_Click"/>
+            <MenuItem x:Name="mi_QLHS" Header="Quản lí hồ sơ" Width="86" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                <MenuItem Header="Hồ sơ nhân viên" IsCheckable="true"/>
+                <MenuItem x:Name="mi_TimKiem" Header="Tìm kiếm thông tin nhân viên" IsCheckable="true" Click="mi_TimKiem_Click"/>
             </MenuItem>
-            <MenuItem x:Name="mi_QLHT" Header="Quan li he thong" Width="104" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                <MenuItem x:Name="mi_QLTK" Header="Quan li tai khoan" Click="mi_QLTK_Click"/>
-                <MenuItem Header="Bang thong ke"/>
+            <MenuItem x:Name="mi_QLHT" Header="Quản lí hệ thống" Width="104" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                <MenuItem x:Name="mi_QLTK" Header="Quản lí tài khoản" Click="mi_QLTK_Click"/>
+                <MenuItem Header="Bảng thống kê" Click="MenuItem_Click_2"/>
             </MenuItem>
-            <MenuItem x:Name="mi_thoat" Header="Thoat" Width="47" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center"  />
+            <MenuItem x:Name="mi_thoat" Header="Thoát" Width="47" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" Click="mi_thoat_Click_1"  />
         </Menu>
     </Grid>
 </Window>

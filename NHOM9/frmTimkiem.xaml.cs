@@ -47,5 +47,12 @@ namespace NHOM9
                 MessageBox.Show(ex.ToString(), "thông báo");
             }
         }
+
+        private void btTroVe_Click(object sender, RoutedEventArgs e)
+        {
+            frmMain M = new frmMain();
+            M.Show();
+            this.Close();
+        }
     }
 }
