@@ -46,35 +46,36 @@ namespace NHOM9
 
         private void mi_TimKiem_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
             frmTimkiem TK = new frmTimkiem();
+            TK.Owner = Application.Current.MainWindow;
             TK.Show();
         }
 
         private void mi_QLTK_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
             frmTaiKhoan TK = new frmTaiKhoan();
+            TK.Owner = Application.Current.MainWindow;
             TK.Show();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
             frmChucVu CV = new frmChucVu();
+            CV.Owner = Application.Current.MainWindow;
             CV.Show();
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Close();
             frmDuAn DA = new frmDuAn();
+            DA.Owner = Application.Current.MainWindow;
             DA.Show();
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             frmThongKe TK = new frmThongKe();
+            TK.Owner = Application.Current.MainWindow;
             TK.Show();
         }
 

@@ -164,5 +164,8 @@
   <ItemGroup>
     <Resource Include="hinhanh\20230416_193727.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="hinhanh\logophenikaa-uni.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -156,10 +156,5 @@ namespace NHOM9
                  MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-        private void Window_Loaded_1(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

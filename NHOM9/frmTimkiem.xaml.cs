@@ -50,8 +50,6 @@ namespace NHOM9
 
         private void btTroVe_Click(object sender, RoutedEventArgs e)
         {
-            frmMain M = new frmMain();
-            M.Show();
             this.Close();
         }
     }

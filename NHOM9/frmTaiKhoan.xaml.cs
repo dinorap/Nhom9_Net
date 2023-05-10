@@ -115,8 +115,6 @@ namespace NHOM9
         private void btTroVe_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            frmMain main = new frmMain();
-            main.ShowDialog();
         }
     }
 }

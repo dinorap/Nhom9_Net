@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="PHẦN MỀM QUẢN LÍ NHÂN SỰ" Height="450" Width="800">
     <Grid>
-        <Image Source="hinhanh/20230416_193727.jpg" Stretch="Fill"/>
+        <Image Source="hinhanh/logophenikaa-uni.jpg" Stretch="Fill" Margin="0,48,0,10"/>
         <Menu Margin="0,0,0,391">
             <MenuItem x:Name="mniDanhMuc" Header="Danh mục" Width="69" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <MenuItem Header="Chức vụ" Click="MenuItem_Click"/>
