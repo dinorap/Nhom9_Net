@@ -6,7 +6,11 @@
         xmlns:local="clr-namespace:NHOM9"
         mc:Ignorable="d"
         Title="frmNhanVien" Height="850" Width="800" Loaded="Window_Loaded">
-    <Grid Margin="0,0,0,78">
+    <Grid Margin="0,0,-0.4,0">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
         <Label Content="ID nhân viên" HorizontalAlignment="Left" Height="45" Margin="62,17,0,0" VerticalAlignment="Top" Width="96"/>
         <Label Content=" Mã chức vụ" HorizontalAlignment="Left" Height="45" Margin="62,89,0,0" VerticalAlignment="Top" Width="96"/>
         <Label Content="phòng ban " HorizontalAlignment="Left" Height="45" Margin="62,165,0,0" VerticalAlignment="Top" Width="96"/>
@@ -34,9 +38,9 @@
         <Button x:Name="btnreset" Content="Reset&#xD;&#xA;" HorizontalAlignment="Left" Margin="29,689,0,0" VerticalAlignment="Top" Height="47" Width="104" Click="btnreset_Click"/>
         <Button x:Name="btnthem" Content="Add" HorizontalAlignment="Left" Margin="193,689,0,0" VerticalAlignment="Top" Height="47" Width="104" Click="btnthem_Click"/>
         <Button x:Name="btnxoa" Content="Delete" HorizontalAlignment="Left" Margin="350,686,0,0" VerticalAlignment="Top" Height="47" Width="104" Click="btnxoa_Click"/>
-        <Button x:Name="btnsua" Content="Edit" HorizontalAlignment="Left" Margin="508,684,0,0" VerticalAlignment="Top" Height="47" Width="104" Click="button6_Click"/>
-        <Button x:Name="button6" Content="Return" HorizontalAlignment="Left" Margin="663,682,0,0" VerticalAlignment="Top" Height="47" Width="104"/>
-        <DataGrid x:Name="dgvMain" HorizontalAlignment="Left" Height="180" Margin="33,475,0,0" VerticalAlignment="Top" Width="734"/>
+        <Button x:Name="btnsua" Content="Edit" HorizontalAlignment="Left" Margin="508,684,0,0" VerticalAlignment="Top" Height="47" Width="104" Click="btnsua_Click"/>
+        <Button x:Name="button6" Content="Return" HorizontalAlignment="Left" Margin="663,682,0,0" VerticalAlignment="Top" Height="47" Width="104" Click="button6_Click"/>
+        <DataGrid x:Name="dgvMain" HorizontalAlignment="Left" Height="180" Margin="33,475,0,0" VerticalAlignment="Top" Width="734" SelectionChanged="dgvMain_SelectionChanged"/>
 
 
     </Grid>

@@ -23,7 +23,7 @@ namespace NHOM9
         public frmPhongBan()
         {
             InitializeComponent();
-            dgvMain.SelectionChanged += dgvMain_SelectionChanged;
+            dgvMain.SelectionChanged += dgvMain_SelectionChanged_1;
         }
 
         private void CapNhat(string sql)
@@ -32,25 +32,9 @@ namespace NHOM9
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblPhongBan").DefaultView;
         }
         
-        private void dgvMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (dgvMain.SelectedItem != null)
-            {
-                DataRowView rowView = (DataRowView)dgvMain.SelectedItem;
-                txtidphongban.Text = rowView["id phòng ban"].ToString();
-                txtmaphongban.Text = rowView["mã phòng ban"].ToString();
-                txttenphongban.Text = rowView["tên phòng ban"].ToString();
-                txtdiachi.Text = rowView["địa chỉ"].ToString();
-                txtghichu.Text = rowView["ghi chú"].ToString();
-            }
-        }
         private void button6_Click(object sender, EventArgs e)
         {
-            MessageBoxResult traloi = MessageBox.Show("bạn có chắc muốn thoát không", "thông báo");
-            if (traloi == MessageBoxResult.OK)
-            {
-                this.Close();
-            }
+            
         }
         private void btnthem_Click(object sender, EventArgs e)
         {
@@ -79,23 +63,7 @@ namespace NHOM9
             txtghichu.Clear();
             txtidphongban.Focus();
         }
-        private void btnsua_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string sql = "update tblPhongBan set Ma_PhongBan=N'" + txtmaphongban.Text + "',Ten_PhongBan=N'"
-                 + txttenphongban.Text + "',Dia_Chi=N'" + txtdiachi.Text + "', Ghi_chu=N'" + txtghichu.Text + "' where ID_PhongBan=" + txtidphongban.Text + "";
-
-                CapNhat(sql);
-                MessageBox.Show("Đã sửa", "Thông báo",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Sửa Thất bại", "Thông báo",
-                 MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-        }
+        
         private void btnxoa_Click(object sender, EventArgs e)
         {
             try
@@ -122,13 +90,62 @@ namespace NHOM9
             dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
             dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
             dgvMain.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            dgvMain.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvMain.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
 
             dgvMain.Columns[0].Header = "id phòng ban";
             dgvMain.Columns[1].Header = "mã phòng ban";
             dgvMain.Columns[2].Header = "tên phòng ban";
             dgvMain.Columns[3].Header = "dịa chỉ";
             dgvMain.Columns[4].Header = "ghi chú ";
+        }
+
+        private void dgvMain_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+           
+
+            DataRowView obj = dgvMain.SelectedItem as DataRowView;
+            if (obj == null)
+            {
+                txtidphongban.Text = "";
+                txtmaphongban.Text = "";
+                txttenphongban.Text = "";
+                txtdiachi.Text = "";
+                txtghichu.Text = "";
+                return;
+            }
+
+            txtidphongban.Text = obj["ID_PhongBan"]?.ToString();
+            txtmaphongban.Text = obj["Ma_PhongBan"]?.ToString();
+            txttenphongban.Text = obj["Ten_PhongBan"]?.ToString();
+            txtdiachi.Text = obj["Dia_Chi"]?.ToString();
+            txtghichu.Text = obj["Ghi_Chu"]?.ToString();
+        }
+
+        private void button6_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult traloi = MessageBox.Show("Bạn có chắc muốn thoát không?", "Thông báo", MessageBoxButton.OKCancel);
+            if (traloi == MessageBoxResult.OK)
+            {
+                this.Close();
+            }
+        }
+
+        private void btnsua_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string sql = "update tblPhongBan set Ma_PhongBan=N'" + txtmaphongban.Text + "',Ten_PhongBan=N'"
+                 + txttenphongban.Text + "',Dia_Chi=N'" + txtdiachi.Text + "', Ghi_chu=N'" + txtghichu.Text + "' where ID_PhongBan=" + txtidphongban.Text + "";
+
+                CapNhat(sql);
+                MessageBox.Show("Đã sửa", "Thông báo",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Sửa Thất bại", "Thông báo",
+                 MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }

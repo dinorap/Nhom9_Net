@@ -50,7 +50,7 @@ namespace NHOM9
         }
         private void button6_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult traloi = MessageBox.Show("bạn có chắc muốn thoát không", "thông báo");
+            MessageBoxResult traloi = MessageBox.Show("Bạn có chắc muốn thoát không?", "Thông báo", MessageBoxButton.OKCancel);
             if (traloi == MessageBoxResult.OK)
             {
                 this.Close();
@@ -60,33 +60,7 @@ namespace NHOM9
         {
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblNhanVien").DefaultView;
         }
-        private void dgvMain_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        {
-            if (dgvMain.SelectedItem != null)
-            {
-                DataRowView rowView = dgvMain.SelectedItem as DataRowView;
-                if (rowView != null)
-                {
-                    txtidnhanvien.Text = rowView[0].ToString();
-                    cbmachuvu.Text = rowView[1].ToString();
-                    cbtenphongban.Text = rowView[2].ToString();
-                    txthoten.Text = rowView[3].ToString();
-                    dtpngaysinh.Text = rowView[4].ToString();
-                    txtgioitinh.Text = rowView[5].ToString();
-                    txtquequan.Text = rowView[6].ToString();
-                    txtsocmt.Text = rowView[7].ToString();
-                    txtluong.Text = rowView[8].ToString();
-                    txtsodienthoai.Text = rowView[9].ToString();
-                    txtsotaikhoan.Text = rowView[10].ToString();
-                    dtpngaytao.Text = rowView[11].ToString();
-                }
-                // chuyền 2 phương thức cho combobox
-                cbmachuvu.ItemsSource = machuvu().DefaultView;
-                cbmachuvu.DisplayMemberPath = "Ma_ChucVu";
-                cbtenphongban.ItemsSource = tenphongban().DefaultView;
-                cbtenphongban.DisplayMemberPath = "Ten_PhongBan";
-            }
-        }
+
         public static DataTable machuvu()
         {
             String sql = "Select Ma_ChucVu from tblChuVu ";
@@ -158,7 +132,32 @@ namespace NHOM9
              }
          }
         */
-        private void btnsua_Click(object sender, EventArgs e)
+
+        private void btnxoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string sql = "delete from tblNhanVien  where ID_NhanVien=" + txtidnhanvien.Text + "";
+
+                CapNhat(sql);
+                MessageBox.Show("Đã xóa", "Thông báo",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Xóa Thất bại", "Thông báo",
+                 MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblNhanVien").DefaultView;
+        }
+
+
+
+        private void btnsua_Click(object sender, RoutedEventArgs e)
         {
             // lấy mã chức vụ
             string chuvu = "Select Ten_ChuVu from tblChuVu where Ma_ChucVu='" + cbmachuvu.Text.ToString() + "'";
@@ -180,26 +179,46 @@ namespace NHOM9
                  MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
-        private void btnxoa_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string sql = "delete from tblNhanVien  where ID_NhanVien=" + txtidnhanvien.Text + "";
 
-                CapNhat(sql);
-                MessageBox.Show("Đã xóa", "Thông báo",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Xóa Thất bại", "Thông báo",
-                 MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void dgvMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblNhanVien").DefaultView;
+
+            if (dgvMain.SelectedItem != null)
+            {
+                DataRowView rowView = dgvMain.SelectedItem as DataRowView;
+                if (rowView != null)
+                {
+                    txtidnhanvien.Text = rowView[0].ToString();
+                    cbmachuvu.Text = rowView[1].ToString();
+                    cbtenphongban.Text = rowView[2].ToString();
+                    txthoten.Text = rowView[3].ToString();
+                    dtpngaysinh.Text = rowView[4].ToString();
+                    txtgioitinh.Text = rowView[5].ToString();
+                    txtquequan.Text = rowView[6].ToString();
+                    txtsocmt.Text = rowView[7].ToString();
+                    txtluong.Text = rowView[8].ToString();
+                    txtsodienthoai.Text = rowView[9].ToString();
+                    txtsotaikhoan.Text = rowView[10].ToString();
+                    dtpngaytao.Text = rowView[11].ToString();
+                }
+
+                // Lấy giá trị của chức vụ và phòng ban từ dòng được chọn
+                string chucVu = rowView[1].ToString();
+                string tenPhongBan = rowView[2].ToString();
+
+                // Populate ComboBoxes
+                cbmachuvu.ItemsSource = machuvu().DefaultView;
+                cbmachuvu.DisplayMemberPath = "Ma_ChucVu";
+                cbmachuvu.SelectedValuePath = "Ma_ChucVu"; // Chọn thuộc tính để binding
+                cbmachuvu.SelectedValue = chucVu;
+
+                cbtenphongban.ItemsSource = tenphongban().DefaultView;
+                cbtenphongban.DisplayMemberPath = "Ten_PhongBan";
+                cbtenphongban.SelectedValuePath = "Ten_PhongBan"; // Chọn thuộc tính để binding
+                cbtenphongban.SelectedValue = tenPhongBan;
+            }
+
+
         }
     }
 }

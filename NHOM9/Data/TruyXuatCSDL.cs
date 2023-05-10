@@ -14,10 +14,6 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
 using System.Collections;
-
-
-
-
 namespace WFB4
 {
     internal class TruyXuatCSDL

@@ -29,10 +29,10 @@ namespace NHOM9
 
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblChuVu").DefaultView;
 
-            dgvMain.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            dgvMain.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvMain.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvMain.Columns[3].Width = new DataGridLength(4, DataGridLengthUnitType.Star);
 
             cbhoten.ItemsSource = TruyXuatCSDL.LayDanhSach("select distinct Ten_ChuVu from tblChuVu");
             cbhoten.SelectedIndex = 0;
@@ -47,20 +47,12 @@ namespace NHOM9
         {
             if (dgvMain.SelectedItem == null)
             {
-                txtidchucvu.Text = "";
-                txtmachucvu.Text = "";
-                txttenchucvu.Text = "";
-                txtghichu.Text = "";
                 return;
             }
 
             DataRowView obj = dgvMain.SelectedItem as DataRowView;
             if (obj == null)
-            {
-                txtidchucvu.Text = "";
-                txtmachucvu.Text = "";
-                txttenchucvu.Text = "";
-                txtghichu.Text = "";
+            {    
                 return;
             }
 
