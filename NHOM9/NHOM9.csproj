@@ -44,6 +44,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -149,7 +151,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -162,7 +163,56 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="hinhanh\20230416_193727.jpg" />
+    <Resource Include="hinhanh\logophenikaa-uni.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="hinhanh\options-lines.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="hinhanh\content-management-system.png" />
+    <Resource Include="hinhanh\logout.png" />
+    <Resource Include="hinhanh\options.png" />
+    <Resource Include="hinhanh\resume.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="hinhanh\corporate.png" />
+    <Resource Include="hinhanh\jobs.png" />
+    <Resource Include="hinhanh\project.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="hinhanh\information-pamphlet.png" />
+    <Resource Include="hinhanh\planing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="hinhanh\statistics.png" />
+    <Resource Include="hinhanh\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="information-pamphlet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="hinhanh\stakeholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="stakeholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="hinhanh\login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="corporate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="statistics.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="planing.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

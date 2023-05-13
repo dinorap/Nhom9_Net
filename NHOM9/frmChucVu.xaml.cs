@@ -24,9 +24,17 @@ namespace NHOM9
         {
             InitializeComponent();
         }
+        private void UpdateHeaderNames()
+        {
+            dgvMain.Columns[0].Header = "ID chức vụ";
+            dgvMain.Columns[1].Header = "Mã chức vụ";
+            dgvMain.Columns[2].Header = "Tên chức vụ";
+            dgvMain.Columns[3].Header = "Ghi chú";
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
+            dgvMain.HorizontalAlignment = HorizontalAlignment.Stretch;
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblChuVu").DefaultView;
 
             dgvMain.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
@@ -36,23 +44,21 @@ namespace NHOM9
 
             cbhoten.ItemsSource = TruyXuatCSDL.LayDanhSach("select distinct Ten_ChuVu from tblChuVu");
             cbhoten.SelectedIndex = 0;
-            dgvMain.Columns[0].Header = "ID chức vụ";
-            dgvMain.Columns[1].Header = "Mã chức vụ";
-            dgvMain.Columns[2].Header = "Tên chức vụ";
-            dgvMain.Columns[3].Header = "Ghi chú";
+            UpdateHeaderNames();
         }
 
 
         private void dgvMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (dgvMain.SelectedItem == null)
-            {
-                return;
-            }
+            
 
             DataRowView obj = dgvMain.SelectedItem as DataRowView;
             if (obj == null)
-            {    
+            {
+                txtidchucvu.Text = "";
+                txtmachucvu.Text = "";
+                txttenchucvu.Text = "";
+                txtghichu.Text = "";
                 return;
             }
 
@@ -75,6 +81,7 @@ namespace NHOM9
         {
             TruyXuatCSDL.ThemSuaXoa(sql);
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblChuVu").DefaultView;
+            UpdateHeaderNames();
         }
         private void btnThem_Click(object sender, RoutedEventArgs e)
         {
@@ -124,11 +131,9 @@ namespace NHOM9
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult traloi = MessageBox.Show("Bạn có chắc muốn thoát không?", "Thông báo", MessageBoxButton.OKCancel);
-            if (traloi == MessageBoxResult.OK)
-            {
+           
                 this.Close();
-            }
+            
         }
 
         private void btnSua_Click(object sender, RoutedEventArgs e)
@@ -147,11 +152,6 @@ namespace NHOM9
                 MessageBox.Show("Sửa Thất bại", "Thông báo",
                  MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
-
-        private void Window_Loaded_1(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

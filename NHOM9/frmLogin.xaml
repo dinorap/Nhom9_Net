@@ -5,15 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NHOM9"
         mc:Ignorable="d"
-        Title="Đăng nhập" Height="350" Width="400">
+        Title="Đăng nhập" Height="298.646" Width="400"
+        WindowStartupLocation="CenterScreen" Icon="login.png">
     <Grid>
-        <Label Content="Tên tài khoản:" HorizontalAlignment="Left" Margin="52,114,0,0" VerticalAlignment="Top"/>
-        <Label Content="Đăng Nhập" HorizontalAlignment="Center" Margin="149,35,138.6,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
-        <Label Content="Mật Khẩu:" HorizontalAlignment="Left" Margin="52,171,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtTenTKhoan" HorizontalAlignment="Left" Margin="149,115,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="181" Height="26"/>
-        <Button Content="Đăng nhập" HorizontalAlignment="Left" Margin="85,242,0,0" VerticalAlignment="Top" Width="94" Click="Button_Click"/>
-        <Button Content="Thoát" HorizontalAlignment="Left" Margin="222,242,0,0" VerticalAlignment="Top" Width="94" Click="Button_Click_1"/>
-        <PasswordBox x:Name="txtMatKhau" HorizontalAlignment="Left" Margin="149,171,0,0" VerticalAlignment="Top" Width="181" Height="26"/>
+        <Label Content="Tên tài khoản:" HorizontalAlignment="Left" Margin="52,93,0,0" VerticalAlignment="Top" FontFamily="Times New Roman"/>
+        <Label Content="Đăng Nhập" HorizontalAlignment="Center" Margin="149,35,133.6,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Width="111" FontFamily="Times New Roman"/>
+        <Label Content="Mật Khẩu:" HorizontalAlignment="Left" Margin="52,150,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" Width="88"/>
+        <TextBox x:Name="txtTenTKhoan" HorizontalAlignment="Left" Margin="149,94,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="181" Height="26" FontFamily="Times New Roman"/>
+        <Button HorizontalAlignment="Left" Margin="93,215,0,0" VerticalAlignment="Top" Width="94" Click="Button_Click" FontFamily="Times New Roman" FontWeight="Bold" Height="23">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="hinhanh/enter.png" Width="16" Height="16" Margin="0,0,5,0" />
+                <TextBlock Text="Đăng nhập" />
+            </StackPanel>
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="236,215,0,0" VerticalAlignment="Top" Width="94" Click="Button_Click_1" FontFamily="Times New Roman" FontWeight="Bold" Height="23">
+        <StackPanel Orientation="Horizontal">
+            <Image Source="hinhanh/logout.png" Width="16" Height="16" Margin="0,0,5,0" />
+            <TextBlock Text="Thoát" />
+        </StackPanel>
+        </Button>
+        <PasswordBox x:Name="txtMatKhau" HorizontalAlignment="Left" Margin="149,150,0,0" VerticalAlignment="Top" Width="181" Height="26" FontFamily="Times New Roman"/>
 
     </Grid>
 </Window>

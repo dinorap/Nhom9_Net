@@ -5,20 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NHOM9"
         mc:Ignorable="d"
-        Title="frmTaiKhoan" Height="400" Width="800" Loaded="Window_Loaded">
+        Title="Tài khoản" Height="400" Width="800" Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen" Icon="user.png">
     <Grid Margin="0,0,0,-6">
-        <DataGrid x:Name="dgvMain" Margin="305,23,23,178" SelectionChanged="dgvMain_SelectionChanged"/>
-        <Label Content="Tai khoan" HorizontalAlignment="Left" Margin="23,41,0,0" VerticalAlignment="Top" Width="96"/>
-        <Label Content="Mat khau" HorizontalAlignment="Left" Margin="23,114,0,0" VerticalAlignment="Top" Width="96"/>
-        <Label Content="Loai tai khoan" HorizontalAlignment="Left" Margin="23,191,0,0" VerticalAlignment="Top" Width="96"/>
-        <TextBox x:Name="txtTaiKhoan" HorizontalAlignment="Left" Margin="137,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <PasswordBox x:Name="txtMatKhau" HorizontalAlignment="Left" Margin="137,122,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtLoaiTaiKhoan" HorizontalAlignment="Left" Margin="137,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btReset" Content="Reset" HorizontalAlignment="Left" Margin="71,307,0,0" VerticalAlignment="Top" Width="95" Click="btReset_Click"/>
-        <Button x:Name="btThem" Content="Them" HorizontalAlignment="Left" Margin="223,307,0,0" VerticalAlignment="Top" Width="95" Click="btThem_Click"/>
-        <Button x:Name="btSua" Content="Sua" HorizontalAlignment="Left" Margin="378,307,0,0" VerticalAlignment="Top" Width="95" Click="btSua_Click"/>
-        <Button x:Name="bbtXoa" Content="Xoa" HorizontalAlignment="Left" Margin="523,307,0,0" VerticalAlignment="Top" Width="95" Click="bbtXoa_Click"/>
-        <Button x:Name="btTroVe" Content="Tro ve" HorizontalAlignment="Left" Margin="662,307,0,0" VerticalAlignment="Top" Width="95" Click="btTroVe_Click"/>
+        <DataGrid x:Name="dgvMain" Margin="305,40,22.6,89.4" SelectionChanged="dgvMain_SelectionChanged" FontFamily="Times New Roman"/>
+        <Label Content="Tài khoản" HorizontalAlignment="Left" Margin="23,45,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman" Height="25"/>
+        <Label Content="Mật khẩu" HorizontalAlignment="Left" Margin="23,152,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman" Height="26"/>
+        <Label Content="Loại tài khoản" HorizontalAlignment="Left" Margin="23,256,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman" Height="26"/>
+        <TextBox x:Name="txtTaiKhoan" HorizontalAlignment="Left" Margin="137,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" FontFamily="Times New Roman" Height="35"/>
+        <PasswordBox x:Name="txtMatKhau" HorizontalAlignment="Left" Margin="137,148,0,0" VerticalAlignment="Top" Width="133" FontFamily="Times New Roman" Height="35"/>
+        <TextBox x:Name="txtLoaiTaiKhoan" HorizontalAlignment="Left" Margin="137,252,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" FontFamily="Times New Roman" Height="34"/>
+        <Button x:Name="btReset" Content="Reset" HorizontalAlignment="Left" Margin="24,321,0,0" VerticalAlignment="Top" Width="95" Click="btReset_Click" FontFamily="Times New Roman" Height="30" FontWeight="Bold"/>
+        <Button x:Name="btThem" Content="Thêm" HorizontalAlignment="Left" Margin="175,321,0,0" VerticalAlignment="Top" Width="95" Click="btThem_Click" FontFamily="Times New Roman" Height="30" FontWeight="Bold"/>
+        <Button x:Name="btSua" Content="Sửa" HorizontalAlignment="Left" Margin="338,321,0,0" VerticalAlignment="Top" Width="95" Click="btSua_Click" FontFamily="Times New Roman" Height="30" FontWeight="Bold"/>
+        <Button x:Name="bbtXoa" Content="Xóa" HorizontalAlignment="Left" Margin="506,321,0,0" VerticalAlignment="Top" Width="95" Click="bbtXoa_Click" FontFamily="Times New Roman" Height="30" FontWeight="Bold"/>
+        <Button x:Name="btTroVe" Content="Trở về" HorizontalAlignment="Left" Margin="662,321,0,0" VerticalAlignment="Top" Width="95" Click="btTroVe_Click" FontFamily="Times New Roman" Height="30" FontWeight="Bold"/>
+        <Label Content="Danh sách tài khoản" HorizontalAlignment="Left" Margin="307,10,0,0" VerticalAlignment="Top" Width="141" Height="26" FontFamily="Times New Roman"/>
 
     </Grid>
 </Window>

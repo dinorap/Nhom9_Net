@@ -5,27 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NHOM9"
         mc:Ignorable="d"
-         Title="frmChucVu" Height="646" Width="698.4" Loaded="Window_Loaded">
-    <Grid x:Name="Danh" Margin="0,0,3.6,0.4">
+         Title="Chức vụ" Height="646" Width="698.4" Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen" Icon="hinhanh/jobs.png">
+    <Grid x:Name="Danh" Margin="0,0,4,-0.2">
 
-
-        <Label Content="Danh sách chức vụ" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="141" Height="26" Grid.ColumnSpan="2"/>
-        <DataGrid x:Name="dgvMain" HorizontalAlignment="Left" Height="276" Margin="10,41,0,0" VerticalAlignment="Top" Width="672" Background="#FFAFAFAF" SelectionChanged="dgvMain_SelectionChanged" />
-        <Label Content="Tìm kiếm" HorizontalAlignment="Left" Margin="8,330,0,0" VerticalAlignment="Top" Width="96"/>
-        <Label Content="ID Chức Vụ" HorizontalAlignment="Left" Margin="9,366,0,0" VerticalAlignment="Top" Width="96"/>
-        <TextBox x:Name="txtidchucvu" HorizontalAlignment="Left" Margin="137,370,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="541" Height="23" HorizontalContentAlignment="Left" IsEnabled="False"/>
-        <Label Content="Mã Chức Vụ" HorizontalAlignment="Left" Margin="10,406,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.091,0.502" Width="96"/>
-        <TextBox x:Name="txtmachucvu" HorizontalAlignment="Left" Margin="137,407,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="541" HorizontalContentAlignment="Left" Height="23"/>
-        <Label Content="Tên Chức Vụ" HorizontalAlignment="Left" Margin="9,442,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.517,1.242" Width="96"/>
-        <TextBox x:Name="txttenchucvu" HorizontalAlignment="Left" Margin="137,444,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="541" Height="23"/>
-        <Label Content="Ghi Chú" HorizontalAlignment="Left" Margin="10,479,0,0" VerticalAlignment="Top" Width="96"/>
-        <TextBox x:Name="txtghichu" HorizontalAlignment="Left" Margin="137,479,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="541" Height="79"/>
-        <ComboBox x:Name="cbhoten" HorizontalAlignment="Left" Margin="137,330,0,0" VerticalAlignment="Top" Width="541" SelectionChanged="cbhoten_SelectionChanged" Height="23"/>
-        <Button x:Name="button2" Content="Reset" HorizontalAlignment="Left" Margin="10,580,0,0" VerticalAlignment="Top" Height="20" Width="95" Click="button2_Click"/>
-        <Button x:Name="btnThem" Content="Thêm" HorizontalAlignment="Left" Margin="137,580,0,0" VerticalAlignment="Top" Height="20" Width="95" Click="btnThem_Click"/>
-        <Button x:Name="btnSua" Content="Sửa" HorizontalAlignment="Left" Margin="285,580,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.655,3.98" Height="20" Width="95" Click="btnSua_Click"/>
-        <Button x:Name="btnXoa" Content="Xóa" HorizontalAlignment="Left" Margin="439,580,0,0" VerticalAlignment="Top" Height="20" Width="95" Click="btnXoa_Click"/>
-        <Button x:Name="button1" Content="Trở về" HorizontalAlignment="Left" Margin="587,580,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.081,0.763" Click="button1_Click" Height="20" Width="95"/>
+        <Label Content="Danh sách chức vụ" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="141" Height="26" Grid.ColumnSpan="2" FontFamily="Times New Roman"/>
+        <DataGrid x:Name="dgvMain" HorizontalAlignment="Left" Height="276" Margin="10,41,0,0" VerticalAlignment="Top" Width="672" Background="#FFAFAFAF" SelectionChanged="dgvMain_SelectionChanged" FontFamily="Times New Roman" />
+        <Label Content="Tìm kiếm" HorizontalAlignment="Left" Margin="8,330,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman"/>
+        <Label Content="ID Chức Vụ" HorizontalAlignment="Left" Margin="9,366,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman"/>
+        <TextBox x:Name="txtidchucvu" HorizontalAlignment="Left" Margin="137,370,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="541" Height="23" HorizontalContentAlignment="Left" IsEnabled="False" FontFamily="Times New Roman"/>
+        <Label Content="Mã Chức Vụ" HorizontalAlignment="Left" Margin="10,406,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.091,0.502" Width="96" FontFamily="Times New Roman"/>
+        <TextBox x:Name="txtmachucvu" HorizontalAlignment="Left" Margin="137,407,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="541" HorizontalContentAlignment="Left" Height="23" FontFamily="Times New Roman"/>
+        <Label Content="Tên Chức Vụ" HorizontalAlignment="Left" Margin="9,442,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.517,1.242" Width="96" FontFamily="Times New Roman"/>
+        <TextBox x:Name="txttenchucvu" HorizontalAlignment="Left" Margin="137,444,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="541" Height="23" FontFamily="Times New Roman"/>
+        <Label Content="Ghi Chú" HorizontalAlignment="Left" Margin="10,479,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman"/>
+        <TextBox x:Name="txtghichu" HorizontalAlignment="Left" Margin="137,479,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="541" Height="79" FontFamily="Times New Roman"/>
+        <ComboBox x:Name="cbhoten" HorizontalAlignment="Left" Margin="137,330,0,0" VerticalAlignment="Top" Width="541" SelectionChanged="cbhoten_SelectionChanged" Height="23" FontFamily="Times New Roman"/>
+        <Button x:Name="button2" Content="Reset" HorizontalAlignment="Left" Margin="10,580,0,0" VerticalAlignment="Top" Height="20" Width="95" Click="button2_Click" FontFamily="Times New Roman" FontWeight="Bold"/>
+        <Button x:Name="btnThem" Content="Thêm" HorizontalAlignment="Left" Margin="137,580,0,0" VerticalAlignment="Top" Height="20" Width="95" Click="btnThem_Click" FontFamily="Times New Roman" FontWeight="Bold"/>
+        <Button x:Name="btnSua" Content="Sửa" HorizontalAlignment="Left" Margin="285,580,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.655,3.98" Height="20" Width="95" Click="btnSua_Click" FontFamily="Times New Roman" FontWeight="Bold"/>
+        <Button x:Name="btnXoa" Content="Xóa" HorizontalAlignment="Left" Margin="439,580,0,0" VerticalAlignment="Top" Height="20" Width="95" Click="btnXoa_Click" FontFamily="Times New Roman" FontWeight="Bold"/>
+        <Button x:Name="button1" Content="Trở về" HorizontalAlignment="Left" Margin="583,580,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.081,0.763" Click="button1_Click" Height="20" Width="95" FontFamily="Times New Roman" FontWeight="Bold"/>
 
     </Grid>
 </Window>

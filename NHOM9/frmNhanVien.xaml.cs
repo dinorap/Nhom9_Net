@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WFB4;
+using System.Linq;
 namespace NHOM9
 {
     /// <summary>
@@ -24,13 +25,16 @@ namespace NHOM9
         public frmNhanVien()
         {
             InitializeComponent();
+           
         }
+        
         private void CapNhat(string sql)
         {
             TruyXuatCSDL.ThemSuaXoa(sql);
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblNhanVien").DefaultView;
         }
-
+        
+            
         private void btnreset_Click(object sender, RoutedEventArgs e)
         {
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblNhanVien").DefaultView;
@@ -50,16 +54,12 @@ namespace NHOM9
         }
         private void button6_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult traloi = MessageBox.Show("Bạn có chắc muốn thoát không?", "Thông báo", MessageBoxButton.OKCancel);
-            if (traloi == MessageBoxResult.OK)
-            {
+            
+            
                 this.Close();
-            }
+            
         }
-        private void frmNhanVien_Load(object sender, EventArgs e)
-        {
-            dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblNhanVien").DefaultView;
-        }
+        
 
         public static DataTable machuvu()
         {
@@ -152,8 +152,39 @@ namespace NHOM9
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblNhanVien").DefaultView;
+            dgvMain.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[5].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[6].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[7].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[8].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[9].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[10].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[11].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            List<string> item2 = TruyXuatCSDL.LayDanhSach("select Ma_ChucVu from tblChuVu").Cast<string>().Where(x => x != "All").ToList();
+            cbmachuvu.ItemsSource = item2;
+            List<string> item1 = TruyXuatCSDL.LayDanhSach("select Ten_PhongBan from tblPhongBan").Cast<string>().Where(x => x != "All").ToList();
+            cbtenphongban.ItemsSource = item1;
+            dgvMain.Columns[0].Header = "ID nhân viên";
+            dgvMain.Columns[1].Header = "Mã chức vụ";
+            dgvMain.Columns[2].Header = "Tên phòng ban";
+            dgvMain.Columns[3].Header = "Họ tên";
+            dgvMain.Columns[4].Header = "Ngày sinh";
+            dgvMain.Columns[5].Header = "Giới tính";
+            dgvMain.Columns[6].Header = "Quê quán";
+            dgvMain.Columns[7].Header = "Số CCCD";
+            dgvMain.Columns[8].Header = "Lương";
+            dgvMain.Columns[9].Header = "Số điện thoại";
+            dgvMain.Columns[10].Header = "Số tài khoản";
+            dgvMain.Columns[11].Header = "Ngày vào làm";
         }
+
+        
 
 
 
@@ -182,45 +213,63 @@ namespace NHOM9
 
         private void dgvMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-            if (dgvMain.SelectedItem != null)
-            {
+            // thiết lập giá trị của các textbox tương ứng với thông tin của nhân viên đầu tiên
+            
+           
                 DataRowView rowView = dgvMain.SelectedItem as DataRowView;
                 if (rowView != null)
                 {
-                    txtidnhanvien.Text = rowView[0].ToString();
-                    cbmachuvu.Text = rowView[1].ToString();
-                    cbtenphongban.Text = rowView[2].ToString();
-                    txthoten.Text = rowView[3].ToString();
-                    dtpngaysinh.Text = rowView[4].ToString();
-                    txtgioitinh.Text = rowView[5].ToString();
-                    txtquequan.Text = rowView[6].ToString();
-                    txtsocmt.Text = rowView[7].ToString();
-                    txtluong.Text = rowView[8].ToString();
-                    txtsodienthoai.Text = rowView[9].ToString();
-                    txtsotaikhoan.Text = rowView[10].ToString();
-                    dtpngaytao.Text = rowView[11].ToString();
+                    txtidnhanvien.Text = rowView[0]?.ToString();
+                    cbmachuvu.Text = rowView[1]?.ToString();
+                    cbtenphongban.Text = rowView[2]?.ToString();
+                    txthoten.Text = rowView[3]?.ToString();
+                    dtpngaysinh.Text = rowView[4]?.ToString();
+                    txtgioitinh.Text = rowView[5]?.ToString();
+                    txtquequan.Text = rowView[6]?.ToString();
+                    txtsocmt.Text = rowView[7]?.ToString();
+                    txtluong.Text = rowView[8]?.ToString();
+                    txtsodienthoai.Text = rowView[9]?.ToString();
+                    txtsotaikhoan.Text = rowView[10]?.ToString();
+                    dtpngaytao.Text = rowView[11]?.ToString();
+               
+                    // Lấy giá trị của chức vụ và phòng ban từ dòng được chọn
+                    string chucVu = rowView[1]?.ToString();
+                    string tenPhongBan = rowView[2]?.ToString();
+
+                    // Populate ComboBoxes
+                    cbmachuvu.ItemsSource = machuvu().DefaultView;
+                    cbmachuvu.DisplayMemberPath = "Ma_ChucVu";
+                    cbmachuvu.SelectedValuePath = "Ma_ChucVu"; // Chọn thuộc tính để binding
+                    cbmachuvu.SelectedValue = chucVu;
+
+                    cbtenphongban.ItemsSource = tenphongban().DefaultView;
+                    cbtenphongban.DisplayMemberPath = "Ten_PhongBan";
+                    cbtenphongban.SelectedValuePath = "Ten_PhongBan"; // Chọn thuộc tính để binding
+                    cbtenphongban.SelectedValue = tenPhongBan;
                 }
-
-                // Lấy giá trị của chức vụ và phòng ban từ dòng được chọn
-                string chucVu = rowView[1].ToString();
-                string tenPhongBan = rowView[2].ToString();
-
-                // Populate ComboBoxes
-                cbmachuvu.ItemsSource = machuvu().DefaultView;
-                cbmachuvu.DisplayMemberPath = "Ma_ChucVu";
-                cbmachuvu.SelectedValuePath = "Ma_ChucVu"; // Chọn thuộc tính để binding
-                cbmachuvu.SelectedValue = chucVu;
-
-                cbtenphongban.ItemsSource = tenphongban().DefaultView;
-                cbtenphongban.DisplayMemberPath = "Ten_PhongBan";
-                cbtenphongban.SelectedValuePath = "Ten_PhongBan"; // Chọn thuộc tính để binding
-                cbtenphongban.SelectedValue = tenPhongBan;
+                else
+            {
+                txtidnhanvien.Text = "";
+                cbmachuvu.Text = "";
+                cbtenphongban.Text = "";
+                txthoten.Text = "";
+                dtpngaysinh.Text = "";
+                txtgioitinh.Text = "";
+                txtquequan.Text = "";
+                txtsocmt.Text = "";
+                txtluong.Text = "";
+                txtsodienthoai.Text = "";
+                txtsotaikhoan.Text = "";
+                dtpngaytao.Text = "";
+                return;
             }
-
-
         }
+        
+
+
+
     }
 }
+    
 
 

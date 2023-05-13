@@ -49,11 +49,9 @@ namespace NHOM9
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult traloi = MessageBox.Show("bạn có chắc muốn thoát không", "thông báo");
-            if (traloi == MessageBoxResult.OK)
-            {
+           
                 this.Close();
-            }
+            
         }
     }
 }

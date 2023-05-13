@@ -5,13 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NHOM9"
         mc:Ignorable="d"
-        Title="frmTimkiem" Height="450" Width="800">
-    <Grid>
-        <Label Content="NHAP HO TEN NHAN VIEN" HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" Width="156"/>
-        <TextBox x:Name="txtTimKiem" HorizontalAlignment="Left" Margin="261,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btTimKiem" Content="TIm Kiem" HorizontalAlignment="Left" Margin="442,102,0,0" VerticalAlignment="Top" Width="111" Click="btTimKiem_Click"/>
-        <DataGrid x:Name="dgvMain" Margin="75,145,75,57"/>
-        <Button x:Name="btThoat" Content="Thoat" HorizontalAlignment="Left" Margin="655,396,0,0" VerticalAlignment="Top" Width="70"/>
-
+        Title="Tìm kiếm" Height="386.8" Width="638"
+        WindowStartupLocation="CenterScreen" Icon="planing.png">
+    <Grid Margin="0,0,0,-6">
+        <Label Content="Nhập thông tin tìm kiếm theo" HorizontalAlignment="Left" Margin="24,1,0,0" VerticalAlignment="Top" Width="174" FontFamily="Times New Roman" FontWeight="Bold"/>
+        <TextBox x:Name="txtTimKiem" HorizontalAlignment="Left" Margin="24,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="460" Height="28"/>
+        <Button x:Name="btTimKiem" Content="Tìm Kiếm" HorizontalAlignment="Left" Margin="511,65,0,0" VerticalAlignment="Top" Width="111" Click="btTimKiem_Click" FontFamily="Times New Roman" FontWeight="Bold" Height="26"/>
+        <DataGrid x:Name="dgvMain" Margin="25,131,9.6,65.8"/>
+        <Button x:Name="btTroVe" Content="Trở về" HorizontalAlignment="Left" Margin="511,313,0,0" VerticalAlignment="Top" Width="111" Click="btTroVe_Click" FontFamily="Times New Roman" FontWeight="Bold" Height="30" RenderTransformOrigin="0.561,1.763"/>
+        <Label Content="Danh sách nhân viên tìm kiếm:" HorizontalAlignment="Left" Margin="25,105,0,0" VerticalAlignment="Top" Width="179" FontFamily="Times New Roman" Height="26"/>
+        <RadioButton x:Name="radio2" Content="ID Nhân viên" HorizontalAlignment="Left" Margin="25,44,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontWeight="Bold"/>
+        <RadioButton x:Name="radio1" Content="Tên Nhân viên" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontWeight="Bold"/>
     </Grid>
 </Window>

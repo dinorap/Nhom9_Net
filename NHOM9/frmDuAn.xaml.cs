@@ -42,14 +42,6 @@ namespace NHOM9
 
         private void dgvMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (dgvMain.SelectedItem == null)
-            {
-                txtid.Text = "";
-                txtten.Text = "";
-                txtso.Text = "";
-                txtchuthich.Text = "";
-                return;
-            }
 
             DataRowView obj = dgvMain.SelectedItem as DataRowView;
             if (obj == null)
@@ -131,11 +123,9 @@ namespace NHOM9
 
         private void btntrove_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult traloi = MessageBox.Show("Bạn có chắc muốn thoát không?", "Thông báo", MessageBoxButton.OKCancel);
-            if (traloi == MessageBoxResult.OK)
-            {
+           
                 this.Close();
-            }
+            
         }
     }
 }

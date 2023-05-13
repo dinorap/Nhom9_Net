@@ -35,16 +35,20 @@ namespace NHOM9
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblTaiKhoan").DefaultView;
-            dgvMain.Columns[0].Header = "ID ";
-            dgvMain.Columns[1].Header = "Tài khoản ";
-            dgvMain.Columns[2].Header = "Mật khẩu ";
-            dgvMain.Columns[3].Header = "Loại tài khoản ";
 
-            dgvMain.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-            dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-            dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-            dgvMain.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            if (dgvMain.Columns.Count >= 4)
+            {
+                dgvMain.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+                dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+                dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+                dgvMain.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+                dgvMain.Columns[0].Header = "ID ";
+                dgvMain.Columns[1].Header = "Tài khoản ";
+                dgvMain.Columns[2].Header = "Mật khẩu ";
+                dgvMain.Columns[3].Header = "Loại tài khoản ";
+            }
         }
+
 
         private void btThem_Click(object sender, RoutedEventArgs e)
         {
@@ -91,11 +95,21 @@ namespace NHOM9
         {
             if (dgvMain.SelectedItem == null) return;
             DataRowView dataRow = dgvMain.SelectedItem as DataRowView;
-            txtTaiKhoan.Text = dataRow["Ten_TKhoan"].ToString();
-            txtMatKhau.Password = dataRow["Mat_Khau"].ToString();
-            txtLoaiTaiKhoan.Text = dataRow["Loai_TKhoan"].ToString();
-            sID = dataRow["id"].ToString();
+            if (dataRow != null)
+            {
+                txtTaiKhoan.Text = dataRow["Ten_TKhoan"].ToString();
+                txtMatKhau.Password = dataRow["Mat_Khau"].ToString();
+                txtLoaiTaiKhoan.Text = dataRow["Loai_TKhoan"].ToString();
+                sID = dataRow["id"].ToString();
+            }
+            else
+            {
+                txtTaiKhoan.Text = "";
+                txtMatKhau.Password = "";
+                txtLoaiTaiKhoan.Text = "";
+            }
         }
+
 
         private void bbtXoa_Click(object sender, RoutedEventArgs e)
         {
@@ -115,8 +129,7 @@ namespace NHOM9
         private void btTroVe_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            frmMain main = new frmMain();
-            main.ShowDialog();
+           
         }
     }
 }

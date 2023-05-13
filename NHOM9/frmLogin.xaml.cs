@@ -37,26 +37,29 @@ namespace NHOM9
                 object kq = ac.executeScalar(sql);
                 if (kq.ToString() == "1")
                 {
-                    MessageBox.Show("Chào mừng user !!", "Thông báo");
-                    frmMain main = new frmMain();
+                    MessageBox.Show("Chào mừng user !!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                    frmMain main = new frmMain(kq.ToString());
+
                     main.Show();
                     this.Hide();
                 }
                 else if (kq.ToString() == "0")
                 {
-                    MessageBox.Show("Chào mừng Admin !!", "Thông báo");
+                    MessageBox.Show("Chào mừng Admin !!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    frmMain main = new frmMain();
+                    frmMain main = new frmMain(kq.ToString());
+
                     main.Show();
                     this.Hide();
-
                 }
-                else {
-                    MessageBox.Show("Đăng nhập thất bại", "Thông báo");
+                else
+                {
+                    MessageBox.Show("Đăng nhập thất bại", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
                     txtTenTKhoan.SelectAll();
                     txtMatKhau.Clear();
                     txtTenTKhoan.Focus();
                 }
+
             }
             catch (Exception ex)
             {
@@ -65,7 +68,11 @@ namespace NHOM9
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            MessageBoxResult traloi = MessageBox.Show("Bạn có chắc muốn thoát không?", "Thông báo", MessageBoxButton.OKCancel);
+            if (traloi == MessageBoxResult.OK)
+            {
+                Environment.Exit(0);
+            }
         }
     }
 }
