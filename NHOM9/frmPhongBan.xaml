@@ -6,27 +6,23 @@
         xmlns:local="clr-namespace:NHOM9"
         mc:Ignorable="d"
        Title="frmPhongBan" Height="701" Width="739" Loaded="Window_Loaded">
-    <Grid Margin="147,286,0,0">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="295*"/>
-            <ColumnDefinition Width="297*"/>
-        </Grid.ColumnDefinitions>
-        <Label Content="ID phòng ban" HorizontalAlignment="Left" Height="40" Margin="-135,33,0,0" VerticalAlignment="Top" Width="101"/>
-        <Label Content="Mã phòng ban" HorizontalAlignment="Left" Height="38" Margin="-135,102,0,0" VerticalAlignment="Top" Width="101"/>
-        <Label Content="Tên phòng ban" HorizontalAlignment="Left" Height="38" Margin="-135,168,0,0" VerticalAlignment="Top" Width="101"/>
-        <Label Content="Địa chỉ " HorizontalAlignment="Left" Height="38" Margin="-135,230,0,0" VerticalAlignment="Top" Width="101"/>
-        <Label Content="Ghi chú" HorizontalAlignment="Left" Height="38" Margin="26,33,0,0" VerticalAlignment="Top" Width="101" Grid.Column="1"/>
-        <TextBox x:Name="txtidphongban" HorizontalAlignment="Left" Margin="-31,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Height="40" />
-        <TextBox x:Name="txtmaphongban" HorizontalAlignment="Left" Margin="-32,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Height="40"/>
-        <TextBox x:Name="txttenphongban" HorizontalAlignment="Left" Margin="-31,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Height="40" />
-        <TextBox x:Name="txtdiachi" HorizontalAlignment="Left" Margin="-31,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Height="40" />
-        <TextBox x:Name="txtghichu" HorizontalAlignment="Left" Height="192" Margin="26,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" Grid.Column="1"/>
-        <Button x:Name="btnreset" Content="Reset&#xA;" HorizontalAlignment="Left" Margin="-105,315,0,0" VerticalAlignment="Top" Click="btnreset_Click" Width="71" Height="19"/>
-        <Button x:Name="btnthem" Content="Add" HorizontalAlignment="Left" Margin="18,315,0,0" VerticalAlignment="Top" Click="btnthem_Click" Width="72" Height="19"/>
-        <Button x:Name="btnxoa" Content="Delete" HorizontalAlignment="Left" Margin="175,315,0,0" VerticalAlignment="Top" Click="btnxoa_Click" Height="19" Width="72"/>
-        <Button x:Name="btnsua" Content="Edit" HorizontalAlignment="Left" Margin="38,315,0,0" VerticalAlignment="Top" Click="button6_Click" Grid.Column="1" Height="19" Width="77"/>
-        <Button x:Name="button6" Content="Return" HorizontalAlignment="Left" Margin="193,315,0,0" VerticalAlignment="Top" Grid.Column="1" Width="71"/>
-        <DataGrid x:Name="dgvMain" HorizontalAlignment="Left" Height="257" Margin="-135,-265,0,0" VerticalAlignment="Top" Width="701" Grid.ColumnSpan="2"/>
+    <Grid>
+        <Label Content="ID phòng ban" HorizontalAlignment="Left" Height="40" Margin="26,233,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Mã phòng ban" HorizontalAlignment="Left" Height="38" Margin="26,320,0,0" VerticalAlignment="Top" Width="101"/>
+        <Label Content="Tên phòng ban" HorizontalAlignment="Left" Height="38" Margin="26,381,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Địa chỉ " HorizontalAlignment="Left" Height="38" Margin="26,442,0,0" VerticalAlignment="Top" Width="101"/>
+        <Label Content="Ghi chú" HorizontalAlignment="Left" Height="38" Margin="26,496,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="txtidphongban" HorizontalAlignment="Left" Margin="216,233,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Height="40" />
+        <TextBox x:Name="txtmaphongban" HorizontalAlignment="Left" Margin="216,303,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Height="40"/>
+        <TextBox x:Name="txttenphongban" HorizontalAlignment="Left" Margin="216,369,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Height="40" />
+        <TextBox x:Name="txtdiachi" HorizontalAlignment="Left" Margin="216,432,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Height="40" />
+        <Button x:Name="btnreset" Content="Reset&#xA;" HorizontalAlignment="Left" Margin="55,576,0,0" VerticalAlignment="Top" Click="btnreset_Click" Width="71" Height="19"/>
+        <Button x:Name="btnthem" Content="Add" HorizontalAlignment="Left" Margin="196,576,0,0" VerticalAlignment="Top" Click="btnthem_Click" Width="72" Height="19"/>
+        <Button x:Name="btnxoa" Content="Delete" HorizontalAlignment="Left" Margin="512,576,0,0" VerticalAlignment="Top" Click="btnxoa_Click" Height="19" Width="72"/>
+        <Button x:Name="btnsua" Content="Edit" HorizontalAlignment="Left" Margin="351,576,0,0" VerticalAlignment="Top" Click="button6_Click" Height="19" Width="77"/>
+        <Button x:Name="button6" Content="Return" HorizontalAlignment="Left" Margin="642,576,0,0" VerticalAlignment="Top" Width="70"/>
+        <DataGrid x:Name="dgvMain" HorizontalAlignment="Center" Height="191" Margin="0,10,0,0" VerticalAlignment="Top" Width="629"/>
+        <TextBox x:Name="txtghichu" HorizontalAlignment="Left" Margin="216,494,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Height="40" />
 
     </Grid>
 </Window>

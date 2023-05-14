@@ -20,7 +20,7 @@ namespace NHOM9
     /// </summary>
     public partial class frmNhanVien : Window
     {
-        TruyXuatCSDL truyxuat; // Declare the object
+        TruyXuatCSDL truyxuat; 
         public frmNhanVien()
         {
             InitializeComponent();

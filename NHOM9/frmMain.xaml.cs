@@ -57,14 +57,12 @@ namespace NHOM9
             TK.Owner = Application.Current.MainWindow;
             TK.Show();
         }
-
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             frmChucVu CV = new frmChucVu();
             CV.Owner = Application.Current.MainWindow;
             CV.Show();
         }
-
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             frmDuAn DA = new frmDuAn();
@@ -82,6 +80,27 @@ namespace NHOM9
         private void mi_thoat_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void mi_QLHS_Click(object sender, RoutedEventArgs e)
+        {
+            frmNhanVien NV = new frmNhanVien();
+            NV.Owner = Application.Current.MainWindow;
+            NV.Show();
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            frmPhongBan PB = new frmPhongBan();
+            PB.Owner = Application.Current.MainWindow; 
+            PB.Show();
+        }
+
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            frmNhanVien NV = new frmNhanVien();
+            NV.Owner = Application.Current.MainWindow;
+            NV.Show();
         }
     }
 }

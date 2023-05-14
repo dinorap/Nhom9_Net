@@ -11,11 +11,11 @@
         <Menu Margin="0,0,0,391">
             <MenuItem x:Name="mniDanhMuc" Header="Danh mục" Width="69" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <MenuItem Header="Chức vụ" Click="MenuItem_Click"/>
-                <MenuItem Header="Phòng ban"/>
+                <MenuItem Header="Phòng ban" Click="MenuItem_Click_3"/>
                 <MenuItem Header="Dự án" Click="MenuItem_Click_1"/>
             </MenuItem>
             <MenuItem x:Name="mi_QLHS" Header="Quản lí hồ sơ" Width="86" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                <MenuItem Header="Hồ sơ nhân viên" IsCheckable="true"/>
+                <MenuItem Header="Hồ sơ nhân viên" IsCheckable="true" Click="MenuItem_Click_4"/>
                 <MenuItem x:Name="mi_TimKiem" Header="Tìm kiếm thông tin nhân viên" IsCheckable="true" Click="mi_TimKiem_Click"/>
             </MenuItem>
             <MenuItem x:Name="mi_QLHT" Header="Quản lí hệ thống" Width="104" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" >
