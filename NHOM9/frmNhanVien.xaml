@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:NHOM9"
         mc:Ignorable="d"
         Title="Nhân viên" Height="796" Width="800" Loaded="Window_Loaded"
-        WindowStartupLocation="CenterScreen" Icon="resume.png">
+        WindowStartupLocation="CenterScreen" Icon="hinhanh/resume.png">
     <Grid Margin="0,0,-0.4,0">
         <Grid.RowDefinitions>
             <RowDefinition/>
