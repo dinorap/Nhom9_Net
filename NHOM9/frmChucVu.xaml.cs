@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WFB4;
+
 namespace NHOM9
 {
     /// <summary>
@@ -20,25 +21,109 @@ namespace NHOM9
     /// </summary>
     public partial class frmChucVu : Window
     {
-        bool isNew = false;
         public string LoaiTKhoan;
+        bool isNew = false;
         public frmChucVu(string LoaiTKhoan)
         {
-
+            this.LoaiTKhoan = LoaiTKhoan;
             InitializeComponent();
             if (LoaiTKhoan == "1")
             {
-                mniDanhMuc.Visibility = Visibility.Collapsed;
+                mniDanhMuc.Visibility = Visibility.Visible;
                 mi_QLHT.Visibility = Visibility.Collapsed;
                 mi_QLHS.Visibility = Visibility.Visible;
+                btboqua.Visibility = Visibility.Collapsed;
+                btthemmoi.Visibility = Visibility.Collapsed;
+                btnSua.Visibility = Visibility.Collapsed;
+                btnThem.Visibility = Visibility.Collapsed;
+                btnXoa.Visibility = Visibility.Collapsed;
+                button2.Visibility = Visibility.Collapsed;
             }
             else
             {
-
                 mniDanhMuc.Visibility = Visibility.Visible;
                 mi_QLHT.Visibility = Visibility.Visible;
                 mi_QLHS.Visibility = Visibility.Visible;
             }
+        }
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            System.Console.WriteLine(LoaiTKhoan);
+            this.Close();
+            frmMain main = new frmMain(LoaiTKhoan);
+            main.Show();
+
+        }
+
+
+        private void mi_TimKiem_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            frmTimkiem TK = new frmTimkiem(LoaiTKhoan);
+            TK.Owner = Application.Current.MainWindow;
+            TK.Show();
+
+        }
+
+        private void mi_QLTK_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            frmTaiKhoan TK = new frmTaiKhoan(LoaiTKhoan);
+            TK.Owner = Application.Current.MainWindow;
+            TK.Show();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            System.Console.WriteLine(LoaiTKhoan);
+            frmChucVu CV = new frmChucVu(LoaiTKhoan);
+            CV.Owner = Application.Current.MainWindow;
+            CV.Show(); this.Close();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+
+            frmDuAn DA = new frmDuAn(LoaiTKhoan);
+            DA.Owner = Application.Current.MainWindow;
+            DA.Show();
+            this.Close();
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            frmThongKe TK = new frmThongKe(LoaiTKhoan);
+            TK.Owner = Application.Current.MainWindow;
+            TK.Show();
+        }
+
+        private void mi_thoat_Click_1(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult traloi = MessageBox.Show("Bạn có chắc muốn thoát không?", "Thông báo", MessageBoxButton.OKCancel);
+            if (traloi == MessageBoxResult.OK)
+            {
+                this.Close();
+                frmLogin lg = new frmLogin();
+                lg.Show();
+
+            }
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            frmNhanVien NV = new frmNhanVien(LoaiTKhoan);
+            NV.Owner = Application.Current.MainWindow;
+            NV.Show();
+        }
+
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            frmPhongBan PB = new frmPhongBan(LoaiTKhoan);
+            PB.Owner = Application.Current.MainWindow;
+            PB.Show();
         }
         private void btnThem_Click(object sender, RoutedEventArgs e)
         {
@@ -109,7 +194,7 @@ namespace NHOM9
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblChuVu").DefaultView;
 
             dgvMain.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
@@ -148,7 +233,7 @@ namespace NHOM9
             txtmachucvu.Text = obj["Ma_ChucVu"]?.ToString();
             txttenchucvu.Text = obj["Ten_ChuVu"]?.ToString();
             txtghichu.Text = obj["Ghi_Chu"]?.ToString();
-            
+
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
@@ -166,8 +251,18 @@ namespace NHOM9
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblChuVu").DefaultView;
             UpdateHeaderNames();
         }
-        
 
+        private void btthemmoi_Click(object sender, RoutedEventArgs e)
+        {
+            SetObjectState(true);
+            isNew = true;
+            txtidchucvu.Focus();
+        }
+
+        private void btboqua_Click(object sender, RoutedEventArgs e)
+        {
+            SetObjectState();
+        }
 
 
         private void btnXoa_Click(object sender, RoutedEventArgs e)
@@ -199,96 +294,5 @@ namespace NHOM9
             }
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-
-            this.Close();
-            frmMain main = new frmMain(LoaiTKhoan);
-            main.Show();
-
-        }
-
-       
-        private void mi_TimKiem_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-            frmTimkiem TK = new frmTimkiem(LoaiTKhoan);
-            TK.Owner = Application.Current.MainWindow;
-            TK.Show();
-
-        }
-
-        private void mi_QLTK_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-            frmTaiKhoan TK = new frmTaiKhoan(LoaiTKhoan);
-            TK.Owner = Application.Current.MainWindow;
-            TK.Show();
-        }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-            frmChucVu CV = new frmChucVu(LoaiTKhoan);
-            CV.Owner = Application.Current.MainWindow;
-            CV.Show();
-        }
-
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-            frmDuAn DA = new frmDuAn(LoaiTKhoan);
-            DA.Owner = Application.Current.MainWindow;
-            DA.Show();
-        }
-
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-            frmThongKe TK = new frmThongKe(LoaiTKhoan);
-            TK.Owner = Application.Current.MainWindow;
-            TK.Show();
-        }
-
-        private void mi_thoat_Click_1(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult traloi = MessageBox.Show("Bạn có chắc muốn thoát không?", "Thông báo", MessageBoxButton.OKCancel);
-            if (traloi == MessageBoxResult.OK)
-            {
-                this.Close();
-                frmLogin lg = new frmLogin();
-                lg.Show();
-
-            }
-        }
-
-        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-            frmNhanVien NV = new frmNhanVien(LoaiTKhoan);
-            NV.Owner = Application.Current.MainWindow;
-            NV.Show();
-        }
-
-        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-            frmPhongBan PB = new frmPhongBan(LoaiTKhoan);
-            PB.Owner = Application.Current.MainWindow;
-            PB.Show();
-        }
-
-        private void btthemmoi_Click(object sender, RoutedEventArgs e)
-        {
-            SetObjectState(true);
-            isNew = true;
-            txtidchucvu.Focus();
-        }
-
-        private void btboqua_Click(object sender, RoutedEventArgs e)
-        {
-            SetObjectState();
-        }
     }
 }
-

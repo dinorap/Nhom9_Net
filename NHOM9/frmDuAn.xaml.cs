@@ -28,13 +28,18 @@ namespace NHOM9
             InitializeComponent();
             if (LoaiTKhoan == "1")
             {
-                mniDanhMuc.Visibility = Visibility.Collapsed;
+                mniDanhMuc.Visibility = Visibility.Visible;
                 mi_QLHT.Visibility = Visibility.Collapsed;
                 mi_QLHS.Visibility = Visibility.Visible;
+                btboqua.Visibility = Visibility.Collapsed;
+                btthemmoi.Visibility = Visibility.Collapsed;
+                btnsua.Visibility = Visibility.Collapsed;
+                btnthem.Visibility = Visibility.Collapsed;
+                btnxoa.Visibility = Visibility.Collapsed;
+                btnreset.Visibility = Visibility.Collapsed;
             }
             else
             {
-
                 mniDanhMuc.Visibility = Visibility.Visible;
                 mi_QLHT.Visibility = Visibility.Visible;
                 mi_QLHS.Visibility = Visibility.Visible;

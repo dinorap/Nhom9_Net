@@ -25,7 +25,7 @@ namespace NHOM9
             InitializeComponent();
             if (LoaiTKhoan == "1")
             {
-                mniDanhMuc.Visibility = Visibility.Collapsed;
+                mniDanhMuc.Visibility = Visibility.Visible;
                 mi_QLHT.Visibility = Visibility.Collapsed;
                 mi_QLHS.Visibility = Visibility.Visible;
             }

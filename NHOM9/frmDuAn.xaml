@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="Dự án" Height="602.8" Width="695.2" Loaded="Window_Loaded"
         WindowStartupLocation="CenterScreen" Icon="hinhanh/project.png">
+    <Window.Resources>
+        <Style TargetType="Button">
+
+            <Style.Triggers>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Foreground" Value="Green" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid Height="574" Margin="0,0,0,-0.4" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
@@ -22,8 +32,8 @@
                     </DataGrid.ColumnHeaderStyle>
                 </DataGrid>
             </ScrollViewer>
-            <Menu Margin="0,0,0.8,534" Grid.ColumnSpan="2">
-                <MenuItem x:Name="mniDanhMuc" Header="Danh mục" Width="95" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" RenderTransformOrigin="0.484,1.126">
+            <Menu Margin="0,0,0.8,534" Grid.ColumnSpan="2" BorderBrush="#00000000">
+                <MenuItem x:Name="mniDanhMuc" Header="Danh mục" Width="95" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" RenderTransformOrigin="0.484,1.126" Foreground="#FF003AFF" BorderBrush="#00000000">
                     <MenuItem.Icon>
                         <Image Source="hinhanh/options.png" HorizontalAlignment="Center" Width="16" Height="16"/>
                     </MenuItem.Icon>
@@ -46,7 +56,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
-                <MenuItem x:Name="mi_QLHS" Header="Quản lí hồ sơ" Width="118" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" >
+                <MenuItem x:Name="mi_QLHS" Header="Quản lí hồ sơ" Width="118" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" Foreground="#FF003AFF" BorderBrush="#00000000" >
                     <MenuItem.Icon>
                         <Image Source="hinhanh/resume.png" HorizontalAlignment="Center" Width="16" Height="16"/>
                     </MenuItem.Icon>
@@ -64,7 +74,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
-                <MenuItem x:Name="mi_QLHT" Header="Quản lí hệ thống" Width="129" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" >
+                <MenuItem x:Name="mi_QLHT" Header="Quản lí hệ thống" Width="129" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" Foreground="#FF003AFF" BorderBrush="#00000000" >
                     <MenuItem.Icon>
                         <Image Source="hinhanh/content-management-system.png" HorizontalAlignment="Center" Width="16" Height="16"/>
                     </MenuItem.Icon>
@@ -82,7 +92,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
-                <MenuItem x:Name="mi_thoat" Header="Thoát" Width="100" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" Click="mi_thoat_Click_1" FontFamily="Times New Roman" FontWeight="Bold">
+                <MenuItem x:Name="mi_thoat" Header="Thoát" Width="100" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" Click="mi_thoat_Click_1" FontFamily="Times New Roman" FontWeight="Bold" Foreground="Red">
                     <MenuItem.Icon>
                         <Image Source="hinhanh/logout.png" HorizontalAlignment="Center" Width="16" Height="16"/>
                     </MenuItem.Icon>
@@ -98,14 +108,14 @@
             <Label Content="Số Nhân Viên" HorizontalAlignment="Left" Margin="10,381,0,0" VerticalAlignment="Top" FontFamily="Times New Roman"/>
             <TextBox x:Name="txtso" HorizontalAlignment="Left" Margin="112,385,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="559" FontFamily="Times New Roman" Grid.ColumnSpan="2"/>
             <Label Content="Mô tả" HorizontalAlignment="Left" Margin="10,415,0,0" VerticalAlignment="Top" FontFamily="Times New Roman"/>
-            <TextBox x:Name="txtchuthich" HorizontalAlignment="Left" Margin="112,420,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="559" Height="80" FontFamily="Times New Roman" Grid.ColumnSpan="2"/>
-            <Button x:Name="btnreset" Content="Reset" HorizontalAlignment="Left" Margin="287,529,0,0" VerticalAlignment="Top" Height="30" Width="95" Click="btnreset_Click" RenderTransformOrigin="1.192,3.62" FontFamily="Times New Roman" FontWeight="Bold"/>
-            <Button x:Name="btboqua" Content="Bỏ Qua" HorizontalAlignment="Left" Margin="34,529,0,0" VerticalAlignment="Top" Width="95" Height="30" FontFamily="Times New Roman" FontWeight="Bold" Click="btboqua_Click" Grid.Column="1"/>
-            <Button x:Name="btnthem" Content="Cập nhật" HorizontalAlignment="Left" Margin="146,529,0,0" VerticalAlignment="Top" Height="30" Width="95" Click="btnthem_Click" FontFamily="Times New Roman" FontWeight="Bold"/>
-            <Button x:Name="btnsua" Content="Sửa" HorizontalAlignment="Left" Margin="287,529,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.655,3.98" Height="30" Width="95" Click="btnSua_Click" FontFamily="Times New Roman" FontWeight="Bold"/>
-            <Button x:Name="btnxoa" Content="Xóa" HorizontalAlignment="Left" Margin="34,529,0,0" VerticalAlignment="Top" Height="30" Width="95" Click="btnxoa_Click" RenderTransformOrigin="0.669,0.725" FontFamily="Times New Roman" FontWeight="Bold" Grid.Column="1"/>
-            <Button x:Name="btntrove" Content="Trở về" HorizontalAlignment="Left" Margin="176,529,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.081,0.763" Click="btntrove_Click" Width="95" Height="30" FontFamily="Times New Roman" FontWeight="Bold" Grid.Column="1"/>
-            <Button x:Name="btthemmoi" Content="Thêm" HorizontalAlignment="Left" Margin="146,529,0,0" VerticalAlignment="Top" Width="95" Height="30" FontFamily="Times New Roman" FontWeight="Bold" Click="btthemmoi_Click"/>
+            <TextBox x:Name="txtchuthich" HorizontalAlignment="Left" Margin="112,420,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="559" Height="80" FontFamily="Times New Roman" Grid.ColumnSpan="2" Foreground="#FF003AFF"/>
+            <Button x:Name="btnreset" Content="Reset" HorizontalAlignment="Left" Margin="287,529,0,0" VerticalAlignment="Top" Height="30" Width="95" Click="btnreset_Click" RenderTransformOrigin="1.192,3.62" FontFamily="Times New Roman" FontWeight="Bold" Foreground="#FF0056FF"/>
+            <Button x:Name="btboqua" Content="Bỏ Qua" HorizontalAlignment="Left" Margin="34,529,0,0" VerticalAlignment="Top" Width="95" Height="30" FontFamily="Times New Roman" FontWeight="Bold" Click="btboqua_Click" Grid.Column="1" Foreground="#FF0056FF"/>
+            <Button x:Name="btnthem" Content="Cập nhật" HorizontalAlignment="Left" Margin="146,529,0,0" VerticalAlignment="Top" Height="30" Width="95" Click="btnthem_Click" FontFamily="Times New Roman" FontWeight="Bold" Foreground="#FF0056FF"/>
+            <Button x:Name="btnsua" Content="Sửa" HorizontalAlignment="Left" Margin="287,529,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.655,3.98" Height="30" Width="95" Click="btnSua_Click" FontFamily="Times New Roman" FontWeight="Bold" Foreground="#FF0056FF" BorderBrush="#FF008CFF"/>
+            <Button x:Name="btnxoa" Content="Xóa" HorizontalAlignment="Left" Margin="34,529,0,0" VerticalAlignment="Top" Height="30" Width="95" Click="btnxoa_Click" RenderTransformOrigin="0.669,0.725" FontFamily="Times New Roman" FontWeight="Bold" Grid.Column="1" Foreground="#FFFF0012"/>
+            <Button x:Name="btntrove" Content="Trở về" HorizontalAlignment="Left" Margin="176,529,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.081,0.763" Click="btntrove_Click" Width="95" Height="30" FontFamily="Times New Roman" FontWeight="Bold" Grid.Column="1" Foreground="#FF0056FF" BorderBrush="#FF008CFF"/>
+            <Button x:Name="btthemmoi" Content="Thêm" HorizontalAlignment="Left" Margin="146,529,0,0" VerticalAlignment="Top" Width="95" Height="30" FontFamily="Times New Roman" FontWeight="Bold" Click="btthemmoi_Click" RenderTransformOrigin="0.297,0.513" Foreground="#FF0056FF" BorderBrush="#FF008CFF"/>
         </Grid>
     </Grid>
 </Window>

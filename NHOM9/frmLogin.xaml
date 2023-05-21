@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NHOM9"
         mc:Ignorable="d"
-        Title="Đăng nhập" Height="326.136" Width="400"
+        Title="Đăng nhập" Height="311.037" Width="400"
         WindowStartupLocation="CenterScreen" Icon="login.png">
-    <Grid>
+    <Grid Margin="0,0,-0.4,-0.4">
         <TextBox x:Name="txtTenTKhoan" 
                  HorizontalAlignment="Left" 
-                 Margin="95,118,0,0" 
+                 Margin="100,95,0,0" 
                  TextWrapping="Wrap"  
                  VerticalAlignment="Top" 
                  Width="207"
@@ -25,7 +25,7 @@
                  VerticalContentAlignment="Center"/>
         <Button Content="Đăng nhập" 
                 HorizontalAlignment="Left" 
-                Margin="75,242,0,0" 
+                Margin="70,210,0,0" 
                 VerticalAlignment="Top" 
                 BorderThickness="0"
                 Foreground="White"
@@ -57,7 +57,7 @@
         </Button>
         <Button Content="Thoát" 
                 HorizontalAlignment="Left" 
-                Margin="199,242,0,0" 
+                Margin="208,210,0,0" 
                 VerticalAlignment="Top" 
                 BorderThickness="0"
                 Foreground="White"
@@ -65,7 +65,7 @@
                 FontFamily="Montserrat"
                 Cursor="Hand"
                 Click="Button_Click_1" 
-                Width="120">
+                Width="120" Height="23">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="red"/>
@@ -89,7 +89,7 @@
         </Button>
         <PasswordBox x:Name="txtMatKhau" 
                      HorizontalAlignment="Left" 
-                     Margin="95,178,0,0" 
+                     Margin="100,155,0,0" 
                      VerticalAlignment="Top" 
                      Width="207"
                      FontSize="13"
@@ -105,7 +105,7 @@
 
         <TextBlock 
             HorizontalAlignment="Left" 
-            Margin="95,92,0,0" 
+            Margin="100,69,0,0" 
             VerticalAlignment="Top" 
             Width="77"
             Text="Tài Khoản"
@@ -116,7 +116,7 @@
 
         <TextBlock 
             HorizontalAlignment="Left" 
-            Margin="95,158,0,0"  
+            Margin="100,135,0,0"  
             Width="77"
             Text="Mật Khẩu"
             Foreground="green"
@@ -127,10 +127,10 @@
         <TextBlock 
             HorizontalAlignment="Left" 
             Foreground="green"
-            Margin="148,49,0,0" 
-            Width="104"
+            Margin="144,28,0,0" 
+            Width="121"
             Text="ĐĂNG NHẬP"
-            FontSize="15"
+            FontSize="17"
             FontWeight="Medium"
             FontFamily="Montserrat"
             VerticalAlignment="Top"/>

@@ -7,7 +7,7 @@
     <Grid>
         <Image Source="hinhanh/logophenikaa-uni.jpg" Stretch="Fill" Margin="0,34,0,0"/>
         <Menu Margin="0,0,0,482">
-            <MenuItem x:Name="mniDanhMuc" Header="Danh mục" Width="95" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold">
+            <MenuItem x:Name="mniDanhMuc" Header="Danh mục" Width="95" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" Background="#FFF4F5F9" Foreground="#FF008CFF">
                 <MenuItem.Icon>
                     <Image Source="hinhanh/options.png" HorizontalAlignment="Center" Width="16" Height="16"/>
                 </MenuItem.Icon>
@@ -30,7 +30,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem x:Name="mi_QLHS" Header="Quản lí hồ sơ" Width="118" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" >
+            <MenuItem x:Name="mi_QLHS" Header="Quản lí hồ sơ" Width="118" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" Background="#FFF4F5F9" Foreground="#FF008CFF" >
                 <MenuItem.Icon>
                     <Image Source="hinhanh/resume.png" HorizontalAlignment="Center" Width="16" Height="16"/>
                 </MenuItem.Icon>
@@ -38,17 +38,17 @@
                     <Thickness Top="4"/>
                 </MenuItem.Padding>
                 <MenuItem Header="Hồ sơ nhân viên" Click ="MenuItem_Click_3">
-                <MenuItem.Icon>
+                    <MenuItem.Icon>
                         <Image Source="hinhanh/information-pamphlet.png"/>
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem x:Name="mi_TimKiem" Header="Tìm kiếm thông tin nhân viên" Click="mi_TimKiem_Click">
-                <MenuItem.Icon>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="mi_TimKiem" Header="Tìm kiếm thông tin nhân viên" Click="mi_TimKiem_Click">
+                    <MenuItem.Icon>
                         <Image Source="hinhanh/planing.png"/>
-                </MenuItem.Icon>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
-            </MenuItem>
-            <MenuItem x:Name="mi_QLHT" Header="Quản lí hệ thống" Width="129" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" >
+            <MenuItem x:Name="mi_QLHT" Header="Quản lí hệ thống" Width="129" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" Background="#FFF4F5F9" Foreground="#FF008CFF" >
                 <MenuItem.Icon>
                     <Image Source="hinhanh/content-management-system.png" HorizontalAlignment="Center" Width="16" Height="16"/>
                 </MenuItem.Icon>
@@ -66,7 +66,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem x:Name="mi_thoat" Header="Thoát" Width="100" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" Click="mi_thoat_Click_1" FontFamily="Times New Roman" FontWeight="Bold">
+            <MenuItem x:Name="mi_thoat" Header="Thoát" Width="100" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" Click="mi_thoat_Click_1" FontFamily="Times New Roman" FontWeight="Bold" Foreground="#FFFF0B0B">
                 <MenuItem.Icon>
                     <Image Source="hinhanh/logout.png" HorizontalAlignment="Center" Width="16" Height="16"/>
                 </MenuItem.Icon>

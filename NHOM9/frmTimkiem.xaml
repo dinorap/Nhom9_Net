@@ -7,9 +7,19 @@
         mc:Ignorable="d"
         Title="Tìm kiếm" Height="536.4" Width="646.8"
         WindowStartupLocation="CenterScreen" Icon="planing.png" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style TargetType="Button">
+
+            <Style.Triggers>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Foreground" Value="Green" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid Margin="0,0,4.4,-5.6">
         <Menu Margin="0,0,0.4,482.4">
-            <MenuItem x:Name="mniDanhMuc" Header="Danh mục" Width="95" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" RenderTransformOrigin="0.484,1.126">
+            <MenuItem x:Name="mniDanhMuc" Header="Danh mục" Width="95" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" RenderTransformOrigin="0.484,1.126" Foreground="#FF0071FF">
                 <MenuItem.Icon>
                     <Image Source="hinhanh/options.png" HorizontalAlignment="Center" Width="16" Height="16"/>
                 </MenuItem.Icon>
@@ -32,7 +42,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem x:Name="mi_QLHS" Header="Quản lí hồ sơ" Width="118" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" >
+            <MenuItem x:Name="mi_QLHS" Header="Quản lí hồ sơ" Width="118" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" Foreground="#FF0071FF" >
                 <MenuItem.Icon>
                     <Image Source="hinhanh/resume.png" HorizontalAlignment="Center" Width="16" Height="16"/>
                 </MenuItem.Icon>
@@ -50,7 +60,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem x:Name="mi_QLHT" Header="Quản lí hệ thống" Width="129" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" >
+            <MenuItem x:Name="mi_QLHT" Header="Quản lí hệ thống" Width="129" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" Foreground="#FF0071FF" >
                 <MenuItem.Icon>
                     <Image Source="hinhanh/content-management-system.png" HorizontalAlignment="Center" Width="16" Height="16"/>
                 </MenuItem.Icon>
@@ -68,7 +78,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem x:Name="mi_thoat" Header="Thoát" Width="100" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" Click="mi_thoat_Click_1" FontFamily="Times New Roman" FontWeight="Bold">
+            <MenuItem x:Name="mi_thoat" Header="Thoát" Width="100" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" Click="mi_thoat_Click_1" FontFamily="Times New Roman" FontWeight="Bold" Foreground="#FFFF0009">
                 <MenuItem.Icon>
                     <Image Source="hinhanh/logout.png" HorizontalAlignment="Center" Width="16" Height="16"/>
                 </MenuItem.Icon>
@@ -82,7 +92,7 @@
         <Button x:Name="btTimKiem" HorizontalAlignment="Left" Margin="507,102,0,0" VerticalAlignment="Top" Width="111" Click="btTimKiem_Click" FontFamily="Times New Roman" FontWeight="Bold" Height="26">
             <StackPanel Orientation="Horizontal">
                 <Image Source="hinhanh/research.png" Width="16" Height="16" Margin="0,0,5,0" />
-                <TextBlock Text="Tìm kiếm" />
+                <TextBlock Text="Tìm kiếm" Foreground="#FF008CFF" />
             </StackPanel>
         </Button>
         <DataGrid x:Name="dgvMain" Margin="25,171,17.6,65">
@@ -92,7 +102,7 @@
                 </Style>
             </DataGrid.ColumnHeaderStyle>
         </DataGrid>
-        <Button x:Name="btTroVe" Content="Trở về" HorizontalAlignment="Left" Margin="523,461,0,0" VerticalAlignment="Top" Width="95" Click="btTroVe_Click" FontFamily="Times New Roman" FontWeight="Bold" Height="30" RenderTransformOrigin="0.561,1.763"/>
+        <Button x:Name="btTroVe" Content="Trở về" HorizontalAlignment="Left" Margin="523,461,0,0" VerticalAlignment="Top" Width="95" Click="btTroVe_Click" FontFamily="Times New Roman" FontWeight="Bold" Height="30" RenderTransformOrigin="0.561,1.763" Foreground="#FF0071FF"/>
         <Label Content="Danh sách nhân viên tìm kiếm:" HorizontalAlignment="Left" Margin="26,135,0,0" VerticalAlignment="Top" Width="179" FontFamily="Times New Roman" Height="26"/>
         <RadioButton x:Name="radio2" Content="ID Nhân viên" HorizontalAlignment="Left" Margin="26,83,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontWeight="Bold"/>
         <RadioButton x:Name="radio1" Content="Tên Nhân viên" HorizontalAlignment="Left" Margin="26,64,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontWeight="Bold"/>
