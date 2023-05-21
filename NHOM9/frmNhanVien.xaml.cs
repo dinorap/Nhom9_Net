@@ -200,30 +200,60 @@ namespace NHOM9
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            string s1 = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            string currentPath = System.IO.Path.GetDirectoryName(s1);
-            filename = currentPath + "\\nhanvien.txt";
-            filename1 = currentPath + "\\nhanvien1.txt";
-            dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblNhanVien").DefaultView;
-            dgvMain.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            dgvMain.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            dgvMain.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            dgvMain.Columns[5].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            dgvMain.Columns[6].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            dgvMain.Columns[7].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            dgvMain.Columns[8].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            dgvMain.Columns[9].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            dgvMain.Columns[10].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            dgvMain.Columns[11].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            List<string> item2 = TruyXuatCSDL.LayDanhSach("select Ma_ChucVu from tblChuVu").Cast<string>().Where(x => x != "All").ToList();
-            cbmachuvu.ItemsSource = item2;
-            List<string> item1 = TruyXuatCSDL.LayDanhSach("select Ten_PhongBan from tblPhongBan").Cast<string>().Where(x => x != "All").ToList();
-            cbtenphongban.ItemsSource = item1;
-            UpdateHeaderNames();
-            btnxoa.IsEnabled = false;
-            btnsua.IsEnabled = false;
+            if (LoaiTKhoan == "1")
+            {
+                string s1 = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                string currentPath = System.IO.Path.GetDirectoryName(s1);
+                filename = currentPath + "\\nhanvien.txt";
+                filename1 = currentPath + "\\nhanvien1.txt";
+                dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblNhanVien").DefaultView;
+                dgvMain.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                dgvMain.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                dgvMain.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                dgvMain.Columns[5].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                dgvMain.Columns[6].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                dgvMain.Columns[7].Visibility = Visibility.Collapsed;
+                dgvMain.Columns[8].Visibility = Visibility.Collapsed;
+                dgvMain.Columns[9].Visibility = Visibility.Collapsed;
+                dgvMain.Columns[10].Visibility = Visibility.Collapsed;
+                dgvMain.Columns[11].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                List<string> item2 = TruyXuatCSDL.LayDanhSach("select Ma_ChucVu from tblChuVu").Cast<string>().Where(x => x != "All").ToList();
+                cbmachuvu.ItemsSource = item2;
+                List<string> item1 = TruyXuatCSDL.LayDanhSach("select Ten_PhongBan from tblPhongBan").Cast<string>().Where(x => x != "All").ToList();
+                cbtenphongban.ItemsSource = item1;
+                UpdateHeaderNames();
+                btnxoa.IsEnabled = false;
+                btnsua.IsEnabled = false;
+            }
+            else
+            {
+                string s1 = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                string currentPath = System.IO.Path.GetDirectoryName(s1);
+                filename = currentPath + "\\nhanvien.txt";
+                filename1 = currentPath + "\\nhanvien1.txt";
+                dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblNhanVien").DefaultView;
+                dgvMain.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                dgvMain.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                dgvMain.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                dgvMain.Columns[5].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                dgvMain.Columns[6].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                dgvMain.Columns[7].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                dgvMain.Columns[8].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                dgvMain.Columns[9].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                dgvMain.Columns[10].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                dgvMain.Columns[11].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+                List<string> item2 = TruyXuatCSDL.LayDanhSach("select Ma_ChucVu from tblChuVu").Cast<string>().Where(x => x != "All").ToList();
+                cbmachuvu.ItemsSource = item2;
+                List<string> item1 = TruyXuatCSDL.LayDanhSach("select Ten_PhongBan from tblPhongBan").Cast<string>().Where(x => x != "All").ToList();
+                cbtenphongban.ItemsSource = item1;
+                UpdateHeaderNames();
+                btnxoa.IsEnabled = false;
+                btnsua.IsEnabled = false;
+            }
         }
         private void btghi_Click(object sender, RoutedEventArgs e)
         {
@@ -332,6 +362,7 @@ namespace NHOM9
             btnxoa.IsEnabled = false;
             btnsua.IsEnabled = false;
             DataRowView rowView = dgvMain.SelectedItem as DataRowView;
+            
                 if (rowView != null)
                 {
                     btnxoa.IsEnabled = true;
@@ -343,10 +374,22 @@ namespace NHOM9
                     dtpngaysinh.Text = rowView[4]?.ToString();
                     txtgioitinh.Text = rowView[5]?.ToString();
                     txtquequan.Text = rowView[6]?.ToString();
+                if (LoaiTKhoan == "1")
+                {
+                    // Ẩn các cột 7, 8, 9, 10
+                    dgvMain.Columns[7].Visibility = Visibility.Collapsed;
+                    dgvMain.Columns[8].Visibility = Visibility.Collapsed;
+                    dgvMain.Columns[9].Visibility = Visibility.Collapsed;
+                    dgvMain.Columns[10].Visibility = Visibility.Collapsed;
+                }
+                else
+                {
                     txtsocmt.Text = rowView[7]?.ToString();
                     txtluong.Text = rowView[8]?.ToString();
                     txtsodienthoai.Text = rowView[9]?.ToString();
                     txtsotaikhoan.Text = rowView[10]?.ToString();
+                }
+               
                     dtpngaytao.Text = rowView[11]?.ToString();
                
                     // Lấy giá trị của chức vụ và phòng ban từ dòng được chọn
