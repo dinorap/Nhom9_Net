@@ -19,24 +19,25 @@ namespace NHOM9
     /// </summary>
     public partial class frmMain : Window
     {
+        public string LoaiTKhoan;
         public frmMain(string LoaiTKhoan)
-        {
-            
+        {   this.LoaiTKhoan = LoaiTKhoan;
             InitializeComponent();
-            if (LoaiTKhoan == "0")
+            if (LoaiTKhoan == "1")
             {
-                mniDanhMuc.IsEnabled = true;
-                mi_QLHT.IsEnabled = true;
-                mi_QLHS.IsEnabled = true;
+                mniDanhMuc.Visibility = Visibility.Collapsed;
+                mi_QLHT.Visibility = Visibility.Collapsed;
+                mi_QLHS.Visibility = Visibility.Visible;
             }
             else
             {
-                mniDanhMuc.IsEnabled = false;
-                mi_QLHT.IsEnabled = false;
-                mi_QLHS.IsEnabled = true;
+
+                mniDanhMuc.Visibility = Visibility.Visible;
+                mi_QLHT.Visibility = Visibility.Visible;
+                mi_QLHS.Visibility = Visibility.Visible;
             }
         }
-        
+
         public frmMain()
         {
             InitializeComponent();
@@ -44,35 +45,41 @@ namespace NHOM9
 
         private void mi_TimKiem_Click(object sender, RoutedEventArgs e)
         {
-            frmTimkiem TK = new frmTimkiem();
+            this.Close();
+            frmTimkiem TK = new frmTimkiem(LoaiTKhoan);
             TK.Owner = Application.Current.MainWindow;
             TK.Show();
+            
         }
 
         private void mi_QLTK_Click(object sender, RoutedEventArgs e)
         {
-            frmTaiKhoan TK = new frmTaiKhoan();
+            this.Close();
+            frmTaiKhoan TK = new frmTaiKhoan(LoaiTKhoan);
             TK.Owner = Application.Current.MainWindow;
             TK.Show();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            frmChucVu CV = new frmChucVu();
+            this.Close();
+            frmChucVu CV = new frmChucVu(LoaiTKhoan);
             CV.Owner = Application.Current.MainWindow;
             CV.Show();
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            frmDuAn DA = new frmDuAn();
+            this.Close();
+            frmDuAn DA = new frmDuAn(LoaiTKhoan);
             DA.Owner = Application.Current.MainWindow;
             DA.Show();
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
-            frmThongKe TK = new frmThongKe();
+            this.Close();
+            frmThongKe TK = new frmThongKe(LoaiTKhoan);
             TK.Owner = Application.Current.MainWindow;
             TK.Show();
         }
@@ -91,14 +98,16 @@ namespace NHOM9
 
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
-            frmNhanVien NV = new frmNhanVien();
+            this.Close();
+            frmNhanVien NV = new frmNhanVien(LoaiTKhoan);
             NV.Owner = Application.Current.MainWindow;
             NV.Show();
         }
 
         private void MenuItem_Click_4(object sender, RoutedEventArgs e)
         {
-            frmPhongBan PB = new frmPhongBan();
+            this.Close();
+            frmPhongBan PB = new frmPhongBan(LoaiTKhoan);
             PB.Owner = Application.Current.MainWindow;
             PB.Show();
         }

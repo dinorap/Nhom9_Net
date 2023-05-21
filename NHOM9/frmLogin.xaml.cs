@@ -39,16 +39,16 @@ namespace NHOM9
                 {
                     MessageBox.Show("Chào mừng user !!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                     frmMain main = new frmMain(kq.ToString());
-
+                    
                     main.Show();
                     this.Hide();
                 }
                 else if (kq.ToString() == "0")
                 {
                     MessageBox.Show("Chào mừng Admin !!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-
+                   
                     frmMain main = new frmMain(kq.ToString());
-
+                                
                     main.Show();
                     this.Hide();
                 }

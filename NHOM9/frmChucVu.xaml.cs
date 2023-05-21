@@ -20,10 +20,86 @@ namespace NHOM9
     /// </summary>
     public partial class frmChucVu : Window
     {
+        bool isNew = false;
+        public string LoaiTKhoan;
+        public frmChucVu(string LoaiTKhoan)
+        {
+
+            InitializeComponent();
+            if (LoaiTKhoan == "1")
+            {
+                mniDanhMuc.Visibility = Visibility.Collapsed;
+                mi_QLHT.Visibility = Visibility.Collapsed;
+                mi_QLHS.Visibility = Visibility.Visible;
+            }
+            else
+            {
+
+                mniDanhMuc.Visibility = Visibility.Visible;
+                mi_QLHT.Visibility = Visibility.Visible;
+                mi_QLHS.Visibility = Visibility.Visible;
+            }
+        }
+        private void btnThem_Click(object sender, RoutedEventArgs e)
+        {
+            if (isNew)
+            {
+                try
+                {
+                    string sql = "insert into tblChuVu values(N'" + txtidchucvu.Text + "', N'" + txtmachucvu.Text + "', " +
+                   "N'" + txttenchucvu.Text + "', N'" + txtghichu.Text + "')";
+                    CapNhat(sql);
+                    MessageBox.Show("Đã thêm", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Thêm Thất bại", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                try
+                {
+                    string sql = "update tblChuVu set ID_ChucVu=N'" + txtidchucvu.Text + "',Ma_ChucVu=N'" + txtmachucvu.Text + "',Ten_ChuVu=N'"
+                     + txttenchucvu.Text + "', Ghi_Chu=N'" + txtghichu.Text + "' where ID_ChucVu=" + txtidchucvu.Text + "";
+
+                    CapNhat(sql);
+                    MessageBox.Show("Đã sửa", "Thông báo",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Sửa Thất bại", "Thông báo",
+                     MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            SetObjectState();
+        }
+        private void btnSua_Click(object sender, RoutedEventArgs e)
+        {
+            SetObjectState(true);
+            isNew = false;
+            txtidchucvu.Focus();
+        }
+        private void SetObjectState(bool Editing = false)
+        {
+            btnThem.Visibility = Editing ? Visibility.Visible : Visibility.Hidden;
+            btboqua.Visibility = Editing ? Visibility.Visible : Visibility.Hidden;
+            button2.Visibility = Editing ? Visibility.Visible : Visibility.Hidden;
+            Editing = !Editing;
+            btthemmoi.Visibility = Editing ? Visibility.Visible : Visibility.Hidden;
+            btnSua.Visibility = Editing ? Visibility.Visible : Visibility.Hidden;
+            btnXoa.Visibility = Editing ? Visibility.Visible : Visibility.Hidden;
+            button1.Visibility = Editing ? Visibility.Visible : Visibility.Hidden;
+
+            dgvMain.IsEnabled = Editing;
+        }
+
         public frmChucVu()
         {
             InitializeComponent();
         }
+
         private void UpdateHeaderNames()
         {
             dgvMain.Columns[0].Header = "ID chức vụ";
@@ -33,39 +109,46 @@ namespace NHOM9
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-            dgvMain.HorizontalAlignment = HorizontalAlignment.Stretch;
+            
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblChuVu").DefaultView;
 
-            dgvMain.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+
+            // cột cuối cùng tự động căn chỉnh kích thước theo chiều rộng còn lại của DataGrid
             dgvMain.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+
 
             cbhoten.ItemsSource = TruyXuatCSDL.LayDanhSach("select distinct Ten_ChuVu from tblChuVu");
             cbhoten.SelectedIndex = 0;
             UpdateHeaderNames();
+            btnXoa.IsEnabled = false;
+            btnSua.IsEnabled = false;
+
         }
 
 
         private void dgvMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-
+            btnXoa.IsEnabled = true;
+            btnSua.IsEnabled = true;
             DataRowView obj = dgvMain.SelectedItem as DataRowView;
             if (obj == null)
             {
+                btnXoa.IsEnabled = false;
+                btnSua.IsEnabled = false;
                 txtidchucvu.Text = "";
                 txtmachucvu.Text = "";
                 txttenchucvu.Text = "";
                 txtghichu.Text = "";
                 return;
             }
-
             txtidchucvu.Text = obj["ID_ChucVu"]?.ToString();
             txtmachucvu.Text = obj["Ma_ChucVu"]?.ToString();
             txttenchucvu.Text = obj["Ten_ChuVu"]?.ToString();
             txtghichu.Text = obj["Ghi_Chu"]?.ToString();
+            
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
@@ -83,20 +166,7 @@ namespace NHOM9
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblChuVu").DefaultView;
             UpdateHeaderNames();
         }
-        private void btnThem_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                string sql = "insert into tblChuVu values(N'" + txtidchucvu.Text + "', N'" + txtmachucvu.Text + "', " +
-               "N'" + txttenchucvu.Text + "', N'" + txtghichu.Text + "')";
-                CapNhat(sql);
-                MessageBox.Show("Đã thêm", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Thêm Thất bại", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
+        
 
 
 
@@ -131,27 +201,94 @@ namespace NHOM9
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-           
-                this.Close();
-            
+
+            this.Close();
+            frmMain main = new frmMain(LoaiTKhoan);
+            main.Show();
+
         }
 
-        private void btnSua_Click(object sender, RoutedEventArgs e)
+       
+        private void mi_TimKiem_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                string sql = "update tblChuVu set Ma_ChucVu=N'" + txtmachucvu.Text + "',Ten_ChuVu=N'"
-                 + txttenchucvu.Text + "', Ghi_Chu=N'" + txtghichu.Text + "' where ID_ChucVu=" + txtidchucvu.Text + "";
+            this.Close();
+            frmTimkiem TK = new frmTimkiem(LoaiTKhoan);
+            TK.Owner = Application.Current.MainWindow;
+            TK.Show();
 
-                CapNhat(sql);
-                MessageBox.Show("Đã sửa", "Thông báo",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (Exception)
+        }
+
+        private void mi_QLTK_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            frmTaiKhoan TK = new frmTaiKhoan(LoaiTKhoan);
+            TK.Owner = Application.Current.MainWindow;
+            TK.Show();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            frmChucVu CV = new frmChucVu(LoaiTKhoan);
+            CV.Owner = Application.Current.MainWindow;
+            CV.Show();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            frmDuAn DA = new frmDuAn(LoaiTKhoan);
+            DA.Owner = Application.Current.MainWindow;
+            DA.Show();
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            frmThongKe TK = new frmThongKe(LoaiTKhoan);
+            TK.Owner = Application.Current.MainWindow;
+            TK.Show();
+        }
+
+        private void mi_thoat_Click_1(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult traloi = MessageBox.Show("Bạn có chắc muốn thoát không?", "Thông báo", MessageBoxButton.OKCancel);
+            if (traloi == MessageBoxResult.OK)
             {
-                MessageBox.Show("Sửa Thất bại", "Thông báo",
-                 MessageBoxButton.OK, MessageBoxImage.Error);
+                this.Close();
+                frmLogin lg = new frmLogin();
+                lg.Show();
+
             }
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            frmNhanVien NV = new frmNhanVien(LoaiTKhoan);
+            NV.Owner = Application.Current.MainWindow;
+            NV.Show();
+        }
+
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            frmPhongBan PB = new frmPhongBan(LoaiTKhoan);
+            PB.Owner = Application.Current.MainWindow;
+            PB.Show();
+        }
+
+        private void btthemmoi_Click(object sender, RoutedEventArgs e)
+        {
+            SetObjectState(true);
+            isNew = true;
+            txtidchucvu.Focus();
+        }
+
+        private void btboqua_Click(object sender, RoutedEventArgs e)
+        {
+            SetObjectState();
         }
     }
 }
+

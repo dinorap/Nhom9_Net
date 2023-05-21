@@ -8,13 +8,76 @@
         Title="Thống kê" Height="450" Width="800" Loaded="frmThongke_Loaded"
         WindowStartupLocation="CenterScreen" Icon="statistics.png">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <GroupBox Header="Thống Kê&#xD;&#xA;" Margin="51,10,42.6,187" FontFamily="Times New Roman">
+        <Menu Margin="0,0,0.6,389">
+            <MenuItem x:Name="mniDanhMuc" Header="Danh mục" Width="95" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" RenderTransformOrigin="0.484,1.126">
+                <MenuItem.Icon>
+                    <Image Source="hinhanh/options.png" HorizontalAlignment="Center" Width="16" Height="16"/>
+                </MenuItem.Icon>
+                <MenuItem.Padding>
+                    <Thickness Top="4"/>
+                </MenuItem.Padding>
+                <MenuItem Header="Chức vụ" Click="MenuItem_Click">
+                    <MenuItem.Icon>
+                        <Image Source="hinhanh/jobs.png" HorizontalAlignment="Center" Width="16" Height="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Phòng ban" Click="MenuItem_Click_4">
+                    <MenuItem.Icon>
+                        <Image Source="hinhanh/corporate.png" HorizontalAlignment="Center" Width="16" Height="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Dự án" Click="MenuItem_Click_1">
+                    <MenuItem.Icon>
+                        <Image Source="hinhanh/project.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem x:Name="mi_QLHS" Header="Quản lí hồ sơ" Width="118" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" >
+                <MenuItem.Icon>
+                    <Image Source="hinhanh/resume.png" HorizontalAlignment="Center" Width="16" Height="16"/>
+                </MenuItem.Icon>
+                <MenuItem.Padding>
+                    <Thickness Top="4"/>
+                </MenuItem.Padding>
+                <MenuItem Header="Hồ sơ nhân viên" Click ="MenuItem_Click_3">
+                    <MenuItem.Icon>
+                        <Image Source="hinhanh/information-pamphlet.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="mi_TimKiem" Header="Tìm kiếm thông tin nhân viên" Click="mi_TimKiem_Click">
+                    <MenuItem.Icon>
+                        <Image Source="hinhanh/planing.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem x:Name="mi_QLHT" Header="Quản lí hệ thống" Width="129" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontWeight="Bold" >
+                <MenuItem.Icon>
+                    <Image Source="hinhanh/content-management-system.png" HorizontalAlignment="Center" Width="16" Height="16"/>
+                </MenuItem.Icon>
+                <MenuItem.Padding>
+                    <Thickness Top="4"/>
+                </MenuItem.Padding>
+                <MenuItem x:Name="mi_QLTK" Header="Quản lí tài khoản" Click="mi_QLTK_Click">
+                    <MenuItem.Icon>
+                        <Image Source="hinhanh/user.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Bảng thống kê" Click="MenuItem_Click_2">
+                    <MenuItem.Icon>
+                        <Image Source="hinhanh/statistics.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem x:Name="mi_thoat" Header="Thoát" Width="100" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" Click="mi_thoat_Click_1" FontFamily="Times New Roman" FontWeight="Bold">
+                <MenuItem.Icon>
+                    <Image Source="hinhanh/logout.png" HorizontalAlignment="Center" Width="16" Height="16"/>
+                </MenuItem.Icon>
+                <MenuItem.Padding>
+                    <Thickness Top="4"/>
+                </MenuItem.Padding>
+            </MenuItem>
+        </Menu>
+        <GroupBox Header="Thống Kê&#xD;&#xA;" Margin="51,36,42.6,161" FontFamily="Times New Roman">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="109*"/>
@@ -26,9 +89,9 @@
                 <Label x:Name="lblSoluongtk" Content="Số lượng tài khoản đã cấp: " HorizontalAlignment="Left" Margin="432,36,0,0" VerticalAlignment="Top" Height="34" Width="217" FontFamily="Times New Roman"/>
             </Grid>
         </GroupBox>
-        <Label x:Name="label1" Content="Yêu cầu tất cả mọi người tập trung hoàn thành tất cả các công việc được giao phó để hoàn thành sản phẩm cho bên đối tác &#xA;                                                                                                                                                                &#x9; Kí tên Giám đốc&#xA;                                                                                                                    &#xA;&#xA;" HorizontalAlignment="Left" Margin="45,247,0,0" VerticalAlignment="Top" Height="44" Width="706" FontFamily="Times New Roman"/>
-        <Label x:Name="label2" Content="Hoàng Thị Khuyên&#xD;&#xA;" HorizontalAlignment="Left" Margin="571,291,0,0" VerticalAlignment="Top" FontFamily="Times New Roman"/>
-        <Button x:Name="button1" Content="Trở về" HorizontalAlignment="Left" Margin="662,352,0,0" VerticalAlignment="Top" Width="89" Click="button1_Click" FontFamily="Times New Roman" FontWeight="Bold" Height="32"/>
+        <Label x:Name="label1" Content="Yêu cầu tất cả mọi người tập trung hoàn thành tất cả các công việc được giao phó để hoàn thành sản phẩm cho bên đối tác &#xA;                                                                                                                                                                &#x9; Kí tên Giám đốc&#xA;                                                                                                                    &#xA;&#xA;" HorizontalAlignment="Left" Margin="45,273,0,0" VerticalAlignment="Top" Height="44" Width="706" FontFamily="Times New Roman"/>
+        <Label x:Name="label2" Content="Hoàng Thị Khuyên&#xD;&#xA;" HorizontalAlignment="Left" Margin="571,317,0,0" VerticalAlignment="Top" FontFamily="Times New Roman"/>
+        <Button x:Name="button1" Content="Trở về" HorizontalAlignment="Left" Margin="656,359,0,0" VerticalAlignment="Top" Width="95" Click="button1_Click" FontFamily="Times New Roman" FontWeight="Bold" Height="30"/>
 
     </Grid>
 </Window>

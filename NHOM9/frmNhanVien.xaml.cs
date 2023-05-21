@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WFB4;
 using System.Linq;
+using System.IO;
 namespace NHOM9
 {
     /// <summary>
@@ -21,6 +22,37 @@ namespace NHOM9
     /// </summary>
     public partial class frmNhanVien : Window
     {
+        string filename = "";
+        string filename1 = "";
+        public string LoaiTKhoan;
+        bool isNew = false;
+        public frmNhanVien(string LoaiTKhoan)
+        {
+            this.LoaiTKhoan = LoaiTKhoan;
+            InitializeComponent();
+            if (LoaiTKhoan == "1")
+            {
+                mniDanhMuc.Visibility = Visibility.Collapsed;
+                mi_QLHT.Visibility = Visibility.Collapsed;
+                mi_QLHS.Visibility = Visibility.Visible;
+                btnreset.Visibility = Visibility.Collapsed;
+                btnsua.Visibility = Visibility.Collapsed;
+                btnthem.Visibility = Visibility.Collapsed;
+                btnxoa.Visibility = Visibility.Collapsed;
+                btdoc.Visibility = Visibility.Collapsed;
+                btghi.Visibility = Visibility.Collapsed;
+                btboqua.Visibility = Visibility.Collapsed;
+                btthemmoi.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                
+
+                mniDanhMuc.Visibility = Visibility.Visible;
+                mi_QLHT.Visibility = Visibility.Visible;
+                mi_QLHS.Visibility = Visibility.Visible;
+            }
+        }
         TruyXuatCSDL truyxuat; // Declare the object
         public frmNhanVien()
         {
@@ -32,6 +64,7 @@ namespace NHOM9
         {
             TruyXuatCSDL.ThemSuaXoa(sql);
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblNhanVien").DefaultView;
+            UpdateHeaderNames();
         }
         
             
@@ -53,14 +86,11 @@ namespace NHOM9
             txtidnhanvien.Focus();
         }
         private void button6_Click(object sender, RoutedEventArgs e)
-        {
-            
-            
+        {         
                 this.Close();
-            
+            frmMain main = new frmMain(LoaiTKhoan);
+            main.Show();
         }
-        
-
         public static DataTable machuvu()
         {
             String sql = "Select Ma_ChucVu from tblChuVu ";
@@ -77,61 +107,78 @@ namespace NHOM9
         }
         private void btnthem_Click(object sender, EventArgs e)
         {
-            // lấy mã chức vụ
-            string chuvu = "Select Ten_ChuVu from tblChuVu where Ma_ChucVu='" + cbmachuvu.Text.ToString() + "'";
-            // string ma_chucvu = Convert.ToString(truyxuat.executeScalar(chuvu));
-            // lấy tên phòng ban
-            string phongban = "Select Ma_PhongBan from tblPhongBan where Ten_PhongBan='" + cbtenphongban.Text.ToString() + "'";
-            //string ten_phongban = Convert.ToString(truyxuat.executeScalar(phongban));
-            // câu lệnh truy vấn sql 
-
-            try
+            if (isNew)
             {
-                string sql = "insert into tblNhanVien values(" + txtidnhanvien.Text + ",N'" + cbmachuvu.Text + "',N'" + cbtenphongban.Text + "',N'" + txthoten.Text + "'," +
-                            "N'" + dtpngaysinh.Text + "',N'" + txtgioitinh.Text + "',N'" + txtquequan.Text + "',N'" + txtsocmt.Text + "'," + txtluong.Text + ",N'" + txtsodienthoai.Text + "',N'" + txtsotaikhoan.Text + "',N'" + dtpngaytao.Text + "')";
-                CapNhat(sql);
+                // lấy mã chức vụ
+                string chuvu = "Select Ten_ChuVu from tblChuVu where Ma_ChucVu='" + cbmachuvu.Text.ToString() + "'";
+                // string ma_chucvu = Convert.ToString(truyxuat.executeScalar(chuvu));
+                // lấy tên phòng ban
+                string phongban = "Select Ma_PhongBan from tblPhongBan where Ten_PhongBan='" + cbtenphongban.Text.ToString() + "'";
+                //string ten_phongban = Convert.ToString(truyxuat.executeScalar(phongban));
+                // câu lệnh truy vấn sql 
 
-                MessageBox.Show("Đã thêm", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                try
+                {
+                    string sql = "insert into tblNhanVien values(" + txtidnhanvien.Text + ",N'" + cbmachuvu.Text + "',N'" + cbtenphongban.Text + "',N'" + txthoten.Text + "'," +
+                                "N'" + dtpngaysinh.Text + "',N'" + txtgioitinh.Text + "',N'" + txtquequan.Text + "',N'" + txtsocmt.Text + "'," + txtluong.Text + ",N'" + txtsodienthoai.Text + "',N'" + txtsotaikhoan.Text + "',N'" + dtpngaytao.Text + "')";
+                    CapNhat(sql);
+
+                    MessageBox.Show("Đã thêm", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Thêm Thất bại", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            catch (Exception)
-            {
-                MessageBox.Show("Thêm Thất bại", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+            else
+            { // lấy mã chức vụ
+                string chuvu = "Select Ten_ChuVu from tblChuVu where Ma_ChucVu='" + cbmachuvu.Text.ToString() + "'";
+
+                // lấy tên phòng ban
+                string phongban = "Select Ma_PhongBan from tblPhongBan where Ten_PhongBan='" + cbtenphongban.Text.ToString() + "'";
+                try
+                {
+                    string sql = "update tblNhanVien set Ma_ChucVu=N'" + cbmachuvu.Text + "',Ten_PhongBan=N'" + cbtenphongban.Text + "',ID_NhanVien=N'" + txtidnhanvien.Text + "', Ho_Ten=N'" + txthoten.Text + "'" +
+                        ",Ngay_Sinh=N'" + dtpngaysinh.Text + "',Gioi_Tinh=N'" + txtgioitinh.Text + "',Que_Quan=N'" + txtquequan.Text + "',So_CMT=N'" + txtsocmt.Text + "'," +
+                        "Luong=" + txtluong.Text + ",So_DienThoai=N'" + txtsodienthoai.Text + "',So_TK=N'" + txtsotaikhoan.Text + "',Ngay_Tao=N'" + dtpngaytao.Text + "' where ID_NhanVien=" + txtidnhanvien.Text + "";
+                    CapNhat(sql);
+                    MessageBox.Show("Đã sửa", "Thông báo",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Sửa Thất bại", "Thông báo",
+                     MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
+            SetObjectState();
         }
-        /*private void fontChữToolStripMenuItem_Click(object sender, RoutedEventArgs e)
-         {
-             var dialog = new FontChooserDialog();
-             if (dialog.ShowDialog() == true)
-             {
-                 dgvMain.FontFamily = new FontFamily(dialog.SelectedFont.FamilyName);
-                 dgvMain.FontSize = dialog.SelectedFont.Size;
-                 dgvMain.FontStyle = dialog.SelectedFont.Style;
-                 dgvMain.FontWeight = dialog.SelectedFont.Weight;
-             }
-         }
+        private void SetObjectState(bool Editing = false)
+        {
+            btnthem.Visibility = Editing ? Visibility.Visible : Visibility.Hidden;
+            btboqua.Visibility = Editing ? Visibility.Visible : Visibility.Hidden;
+            btnreset.Visibility = Editing ? Visibility.Visible : Visibility.Hidden;
+            Editing = !Editing;
+            btthemmoi.Visibility = Editing ? Visibility.Visible : Visibility.Hidden;
+            btnsua.Visibility = Editing ? Visibility.Visible : Visibility.Hidden;
+            btnxoa.Visibility = Editing ? Visibility.Visible : Visibility.Hidden;
+            button6.Visibility = Editing ? Visibility.Visible : Visibility.Hidden;
+            btghi.Visibility = Editing ? Visibility.Visible : Visibility.Hidden;
+            btdoc.Visibility = Editing ? Visibility.Visible : Visibility.Hidden;
+            dgvMain.IsEnabled = Editing;
+        }
+        private void btthemmoi_Click(object sender, RoutedEventArgs e)
+        {
+            SetObjectState(true);
+            isNew = true;
+            txtidnhanvien.Focus();
+        }
 
-         private void màuChữToolStripMenuItem_Click(object sender, RoutedEventArgs e)
-         {
-             var dialog = new System.Windows.Controls.ColorPickerDialog();
-             if (dialog.ShowDialog() == true)
-             {
-                 var color = new SolidColorBrush(dialog.SelectedColor);
-                 dgvMain.Foreground = color;
-                 txtidnhanvien.Foreground = color;
-                 cbmachuvu.Foreground = color;
-                 cbtenphongban.Foreground = color;
-                 txthoten.Foreground = color;
-                 dtpngaysinh.Foreground = color;
-                 txtgioitinh.Foreground = color;
-                 txtquequan.Foreground = color;
-                 txtsocmt.Foreground = color;
-                 txtluong.Foreground = color;
-                 txtsodienthoai.Foreground = color;
-                 txtsotaikhoan.Foreground = color;
-                 dtpngaytao.Foreground = color;
-             }
-         }
-        */
+        private void btboqua_Click(object sender, RoutedEventArgs e)
+        {
+            SetObjectState();
+        }
+
 
         private void btnxoa_Click(object sender, EventArgs e)
         {
@@ -148,11 +195,15 @@ namespace NHOM9
                 MessageBox.Show("Xóa Thất bại", "Thông báo",
                  MessageBoxButton.OK, MessageBoxImage.Information);
             }
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            string s1 = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            string currentPath = System.IO.Path.GetDirectoryName(s1);
+            filename = currentPath + "\\nhanvien.txt";
+            filename1 = currentPath + "\\nhanvien1.txt";
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblNhanVien").DefaultView;
             dgvMain.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
             dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
@@ -170,6 +221,89 @@ namespace NHOM9
             cbmachuvu.ItemsSource = item2;
             List<string> item1 = TruyXuatCSDL.LayDanhSach("select Ten_PhongBan from tblPhongBan").Cast<string>().Where(x => x != "All").ToList();
             cbtenphongban.ItemsSource = item1;
+            UpdateHeaderNames();
+            btnxoa.IsEnabled = false;
+            btnsua.IsEnabled = false;
+        }
+        private void btghi_Click(object sender, RoutedEventArgs e)
+        {
+            StreamWriter writer = new StreamWriter(filename);
+
+            // Lấy dữ liệu từ DataGrid
+            foreach (var dataItem in dgvMain.Items)
+            {
+                if (dataItem is DataRowView rowView)
+                {
+                    DataRow row = rowView.Row;
+                    string rowData = string.Join(",", row.ItemArray.Select(item => item.ToString()));
+                    writer.WriteLine(rowData);
+                }
+            }
+            // Đóng tệp
+            writer.Close();
+            string successMessage = "Ghi thành công vào tệp: " + filename;
+            MessageBox.Show(successMessage, "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+        private void btdoc_Click(object sender, RoutedEventArgs e)
+        {
+            if (!File.Exists(filename1))
+            {
+                MessageBox.Show("Không tìm thấy tệp " + filename1, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            try
+            {
+                // Mở tệp
+                StreamReader reader = new StreamReader(filename1);
+                string line = reader.ReadLine();
+
+                // Tạo một DataTable mới để chứa dữ liệu
+                DataTable dataTable = new DataTable();
+
+                // Tạo các cột trong DataTable
+                dataTable.Columns.Add("ID Nhân Viên");
+                dataTable.Columns.Add("Mã Chức Vụ");
+                dataTable.Columns.Add("Tên Phòng Ban");
+                dataTable.Columns.Add("Họ Tên");
+                dataTable.Columns.Add("Ngày Sinh");
+                dataTable.Columns.Add("Giới Tính");
+                dataTable.Columns.Add("Quê Quán");
+                dataTable.Columns.Add("SoCMT");
+                dataTable.Columns.Add("Lương");
+                dataTable.Columns.Add("SĐT");
+                dataTable.Columns.Add("STK");
+                dataTable.Columns.Add("Ngày vào làm");
+
+                // Đọc từng dòng trong tệp
+                while (line != null)
+                {
+                    // Tạo một mảng các giá trị từ chuỗi dòng
+                    string[] rowData = line.Split(',');
+
+                    // Thêm dòng vào DataTable
+                    dataTable.Rows.Add(rowData);
+
+                    line = reader.ReadLine();
+                }
+
+                // Đặt DataTable làm ItemsSource của DataGrid
+                dgvMain.ItemsSource = dataTable.DefaultView;
+
+                // Đóng tệp
+                reader.Close();
+
+                // Hiển thị thông báo thành công
+                MessageBox.Show("Đọc và cập nhật dữ liệu thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Rất tiếc, đã xảy ra lỗi: " + ex.Message);
+            }
+        }
+
+
+        private void UpdateHeaderNames()
+        {
             dgvMain.Columns[0].Header = "ID nhân viên";
             dgvMain.Columns[1].Header = "Mã chức vụ";
             dgvMain.Columns[2].Header = "Tên phòng ban";
@@ -184,41 +318,24 @@ namespace NHOM9
             dgvMain.Columns[11].Header = "Ngày vào làm";
         }
 
-        
-
-
-
         private void btnsua_Click(object sender, RoutedEventArgs e)
         {
-            // lấy mã chức vụ
-            string chuvu = "Select Ten_ChuVu from tblChuVu where Ma_ChucVu='" + cbmachuvu.Text.ToString() + "'";
-
-            // lấy tên phòng ban
-            string phongban = "Select Ma_PhongBan from tblPhongBan where Ten_PhongBan='" + cbtenphongban.Text.ToString() + "'";
-            try
-            {
-                string sql = "update tblNhanVien set Ma_ChucVu=N'" + cbmachuvu.Text + "',Ten_PhongBan=N'" + cbtenphongban.Text + "', Ho_Ten=N'" + txthoten.Text + "'" +
-                    ",Ngay_Sinh=N'" + dtpngaysinh.Text + "',Gioi_Tinh=N'" + txtgioitinh.Text + "',Que_Quan=N'" + txtquequan.Text + "',So_CMT=N'" + txtsocmt.Text + "'," +
-                    "Luong=" + txtluong.Text + ",So_DienThoai=N'" + txtsodienthoai.Text + "',So_TK=N'" + txtsotaikhoan.Text + "',Ngay_Tao=N'" + dtpngaytao.Text + "' where ID_NhanVien=" + txtidnhanvien.Text + "";
-                CapNhat(sql);
-                MessageBox.Show("Đã sửa", "Thông báo",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Sửa Thất bại", "Thông báo",
-                 MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            SetObjectState(true);
+            isNew = false;
+            txtidnhanvien.Focus();
         }
 
         private void dgvMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // thiết lập giá trị của các textbox tương ứng với thông tin của nhân viên đầu tiên
-            
-           
-                DataRowView rowView = dgvMain.SelectedItem as DataRowView;
+
+            btnxoa.IsEnabled = false;
+            btnsua.IsEnabled = false;
+            DataRowView rowView = dgvMain.SelectedItem as DataRowView;
                 if (rowView != null)
                 {
+                    btnxoa.IsEnabled = true;
+                    btnsua.IsEnabled = true;
                     txtidnhanvien.Text = rowView[0]?.ToString();
                     cbmachuvu.Text = rowView[1]?.ToString();
                     cbtenphongban.Text = rowView[2]?.ToString();
@@ -264,10 +381,79 @@ namespace NHOM9
                 return;
             }
         }
+
+        private void mi_TimKiem_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            frmTimkiem TK = new frmTimkiem(LoaiTKhoan);
+            TK.Owner = Application.Current.MainWindow;
+            TK.Show();
+
+        }
+
+        private void mi_QLTK_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            frmTaiKhoan TK = new frmTaiKhoan(LoaiTKhoan);
+            TK.Owner = Application.Current.MainWindow;
+            TK.Show();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            frmChucVu CV = new frmChucVu(LoaiTKhoan);
+            CV.Owner = Application.Current.MainWindow;
+            CV.Show();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            frmDuAn DA = new frmDuAn(LoaiTKhoan);
+            DA.Owner = Application.Current.MainWindow;
+            DA.Show();
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            frmThongKe TK = new frmThongKe(LoaiTKhoan);
+            TK.Owner = Application.Current.MainWindow;
+            TK.Show();
+        }
+
+        private void mi_thoat_Click_1(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult traloi = MessageBox.Show("Bạn có chắc muốn thoát không?", "Thông báo", MessageBoxButton.OKCancel);
+            if (traloi == MessageBoxResult.OK)
+            {
+                this.Close();
+                frmLogin lg = new frmLogin();
+                lg.Show();
+
+            }
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            frmNhanVien NV = new frmNhanVien(LoaiTKhoan);
+            NV.Owner = Application.Current.MainWindow;
+            NV.Show();
+        }
+
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            frmPhongBan PB = new frmPhongBan(LoaiTKhoan);
+            PB.Owner = Application.Current.MainWindow;
+            PB.Show();
+        }
+
         
 
-
-
+        
     }
 }
     
