@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WFB4;
-
+using System.Security.Cryptography;
 namespace NHOM9
 {
     /// <summary>
@@ -25,6 +25,15 @@ namespace NHOM9
         {
             InitializeComponent();
         }
+        private string MaHoaMatKhau(string matkhau)
+        {
+            using (SHA256 sha256 = new SHA256Managed())
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(matkhau);
+                byte[] hash = sha256.ComputeHash(bytes);
+                return Convert.ToBase64String(hash);
+            }
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -32,8 +41,8 @@ namespace NHOM9
             {
                 TruyXuatCSDL ac = new TruyXuatCSDL();
                 string tk = txtTenTKhoan.Text;
-                string mk = txtMatKhau.Password;
-                string sql = "select Loai_TKhoan from [tblTaiKhoan] where Ten_TKhoan =N'" + tk + "'and Mat_Khau =N'" + mk + "'";//USER LÀ TỪ KHÓA RIÊNG CỦA SQL SERVER VÌ VẬY PHẢI ĐẶT NGOẶC VUÔNG BÊN NGOÀI ĐỂ LÀM RÕ USER LÀ ĐỐI TƯỢNG BẢNG CỦA DATABASE CHỨ KHÔNG PHẢI TỪ KHÓA CỦA SQL
+                string mk = MaHoaMatKhau(txtMatKhau.Password); // Mã hóa mật khẩu
+                string sql = "select Loai_TKhoan from [tblTaiKhoan] where Ten_TKhoan = N'" + tk + "' and Mat_Khau = N'" + mk + "'";
                 object kq = ac.executeScalar(sql);
                 if (kq.ToString() == "1")
                 {
@@ -73,6 +82,14 @@ namespace NHOM9
             {
                 Environment.Exit(0);
             }
+        }
+
+        private void Button_Click1(object sender, RoutedEventArgs e)
+        {
+            
+            dangky TK = new dangky();
+            TK.Show();
+            this.Close();
         }
     }
 }

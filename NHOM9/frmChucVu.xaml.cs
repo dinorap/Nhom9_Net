@@ -131,7 +131,7 @@ namespace NHOM9
             {
                 try
                 {
-                    string sql = "insert into tblChuVu values(N'" + txtidchucvu.Text + "', N'" + txtmachucvu.Text + "', " +
+                    string sql = "insert into tblChuVu values(N'" + txtmachucvu.Text + "', " +
                    "N'" + txttenchucvu.Text + "', N'" + txtghichu.Text + "')";
                     CapNhat(sql);
                     MessageBox.Show("Đã thêm", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -145,8 +145,8 @@ namespace NHOM9
             {
                 try
                 {
-                    string sql = "update tblChuVu set ID_ChucVu=N'" + txtidchucvu.Text + "',Ma_ChucVu=N'" + txtmachucvu.Text + "',Ten_ChuVu=N'"
-                     + txttenchucvu.Text + "', Ghi_Chu=N'" + txtghichu.Text + "' where ID_ChucVu=" + txtidchucvu.Text + "";
+                    string sql = "update tblChuVu set Ma_ChucVu=N'" + txtmachucvu.Text + "',Ten_ChuVu=N'"
+                     + txttenchucvu.Text + "', Ghi_Chu=N'" + txtghichu.Text + "' where ID_ChucVu=" + sID + "";
 
                     CapNhat(sql);
                     MessageBox.Show("Đã sửa", "Thông báo",
@@ -164,7 +164,7 @@ namespace NHOM9
         {
             SetObjectState(true);
             isNew = false;
-            txtidchucvu.Focus();
+            txtmachucvu.Focus();
         }
         private void SetObjectState(bool Editing = false)
         {
@@ -194,26 +194,30 @@ namespace NHOM9
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            cbhoten.ItemsSource = TruyXuatCSDL.LayDanhSach("select distinct Ten_ChuVu from tblChuVu");
+            cbhoten.SelectedIndex = 0;
+
+            btnXoa.IsEnabled = false;
+            btnSua.IsEnabled = false;
 
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblChuVu").DefaultView;
-
-            dgvMain.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvMain.Columns[0].Visibility = Visibility.Collapsed; // Ẩn cột ; 
             dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
 
             // cột cuối cùng tự động căn chỉnh kích thước theo chiều rộng còn lại của DataGrid
             dgvMain.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-
+            UpdateHeaderNames();
 
             cbhoten.ItemsSource = TruyXuatCSDL.LayDanhSach("select distinct Ten_ChuVu from tblChuVu");
             cbhoten.SelectedIndex = 0;
-            UpdateHeaderNames();
+            
             btnXoa.IsEnabled = false;
             btnSua.IsEnabled = false;
 
         }
 
-
+        string sID = "";
         private void dgvMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             btnXoa.IsEnabled = true;
@@ -223,25 +227,26 @@ namespace NHOM9
             {
                 btnXoa.IsEnabled = false;
                 btnSua.IsEnabled = false;
-                txtidchucvu.Text = "";
+                
                 txtmachucvu.Text = "";
                 txttenchucvu.Text = "";
                 txtghichu.Text = "";
                 return;
             }
-            txtidchucvu.Text = obj["ID_ChucVu"]?.ToString();
+           
             txtmachucvu.Text = obj["Ma_ChucVu"]?.ToString();
             txttenchucvu.Text = obj["Ten_ChuVu"]?.ToString();
             txtghichu.Text = obj["Ghi_Chu"]?.ToString();
+            sID = obj["ID_ChucVu"].ToString();
 
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-            txtidchucvu.Text = "";
             txtmachucvu.Text = "";
             txttenchucvu.Text = "";
             txtghichu.Text = "";
+            txtmachucvu.Focus();
             return;
         }
 
@@ -256,7 +261,7 @@ namespace NHOM9
         {
             SetObjectState(true);
             isNew = true;
-            txtidchucvu.Focus();
+            txtmachucvu.Focus();
         }
 
         private void btboqua_Click(object sender, RoutedEventArgs e)
@@ -269,7 +274,7 @@ namespace NHOM9
         {
             try
             {
-                string sql = "delete from tblChuVu where ID_ChucVu=" + txtidchucvu.Text + "";
+                string sql = "delete from tblChuVu where ID_ChucVu=" + sID + "";
 
                 CapNhat(sql);
                 MessageBox.Show("Đã xóa", "Thông báo",

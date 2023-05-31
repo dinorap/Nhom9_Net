@@ -101,7 +101,7 @@
                     </MenuItem.Padding>
                 </MenuItem>
             </Menu>
-            <Label Content="ID Dự Án" HorizontalAlignment="Left" Margin="10,305,0,0" VerticalAlignment="Top" FontFamily="Times New Roman"/>
+            <Label Content="Mã Dự Án" HorizontalAlignment="Left" Margin="10,305,0,0" VerticalAlignment="Top" FontFamily="Times New Roman"/>
             <TextBox x:Name="txtid" HorizontalAlignment="Left" Margin="112,309,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="559" Height="18" HorizontalContentAlignment="Left" IsEnabled="True" FontFamily="Times New Roman" Grid.ColumnSpan="2"/>
             <Label Content="Tên Dự Án" HorizontalAlignment="Left" Margin="10,343,0,0" VerticalAlignment="Top" FontFamily="Times New Roman"/>
             <TextBox x:Name="txtten" HorizontalAlignment="Left" Margin="112,348,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="559" HorizontalContentAlignment="Left" Height="18" FontFamily="Times New Roman" Grid.ColumnSpan="2"/>

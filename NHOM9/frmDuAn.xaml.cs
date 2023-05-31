@@ -52,22 +52,24 @@ namespace NHOM9
         private void UpdateHeaderNames()
         {
             dgvMain.Columns[0].Header = "Id dự án ";
-            dgvMain.Columns[1].Header = "Tên dự án ";
-            dgvMain.Columns[2].Header = "Số nhân viên ";
-            dgvMain.Columns[3].Header = "Mô tả dự án";
+            dgvMain.Columns[1].Header = "Mã dự án ";
+            dgvMain.Columns[2].Header = "Tên dự án ";
+            dgvMain.Columns[3].Header = "Số nhân viên ";
+            dgvMain.Columns[4].Header = "Mô tả dự án";
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblDuAn").DefaultView;
-            dgvMain.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[0].Visibility = Visibility.Collapsed; // Ẩn cột ; 
             dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
             dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
             dgvMain.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
             UpdateHeaderNames();
             btnxoa.IsEnabled = false;
             btnsua.IsEnabled = false;
         }
-
+        string sID = "";
         private void dgvMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             btnxoa.IsEnabled = true;
@@ -88,6 +90,7 @@ namespace NHOM9
             txtten.Text = obj["name_Da"]?.ToString();
             txtso.Text = obj["Sonv_Da"]?.ToString();
             txtchuthich.Text = obj["Mota_Da"]?.ToString();
+            sID = obj["id_Da"].ToString();
         }
 
         private void btnreset_Click(object sender, RoutedEventArgs e)
@@ -124,7 +127,7 @@ namespace NHOM9
             {
                 try
                 {
-                    string sql = "update tblDuAn set id_Da=N'" + txtid.Text + "',name_Da=N'" + txtten.Text + "',sonv_Da=" + txtso.Text + ", mota_Da=N'" + txtchuthich.Text + "' where id_Da=N'" + txtid.Text + "'";
+                    string sql = "update tblDuAn set ma_Da=N'" + txtid.Text + "',name_Da=N'" + txtten.Text + "',sonv_Da=" + txtso.Text + ", mota_Da=N'" + txtchuthich.Text + "' where id_Da=N'" + sID + "'";
 
                     CapNhat(sql);
 
@@ -174,7 +177,7 @@ namespace NHOM9
         {
             try
             {
-                string sql = "delete from tblDuAn  where id_Da=N'" + txtid.Text + "'";
+                string sql = "delete from tblDuAn  where id_Da=N'" + sID + "'";
 
                 CapNhat(sql);
                 MessageBox.Show("Đã xóa", "Thông báo",

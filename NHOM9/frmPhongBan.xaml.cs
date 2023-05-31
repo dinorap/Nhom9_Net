@@ -70,13 +70,14 @@ namespace NHOM9
         {
             
         }
+        string sID = "";
         private void btnthem_Click(object sender, EventArgs e)
         {
             if (isNew)
             {
                 try
                 {
-                    string sql = "insert into tblPhongBan values(" + txtidphongban.Text + ", N'" + txtmaphongban.Text + "', " +
+                    string sql = "insert into tblPhongBan values(N'" + txtmaphongban.Text + "', " +
                    "N'" + txttenphongban.Text + "', N'" + txtdiachi.Text + "', N'" + txtghichu.Text + "')";
                     CapNhat(sql);
                     MessageBox.Show("Đã thêm", "Thông báo",
@@ -93,7 +94,7 @@ namespace NHOM9
                 try
                 {
                     string sql = "update tblPhongBan set Ma_PhongBan=N'" + txtmaphongban.Text + "',Ten_PhongBan=N'"
-                     + txttenphongban.Text + "',Dia_Chi=N'" + txtdiachi.Text + "', Ghi_chu=N'" + txtghichu.Text + "' where ID_PhongBan=" + txtidphongban.Text + "";
+                     + txttenphongban.Text + "',Dia_Chi=N'" + txtdiachi.Text + "', Ghi_chu=N'" + txtghichu.Text + "' where ID_PhongBan=" + sID + "";
 
                     CapNhat(sql);
                     MessageBox.Show("Đã sửa", "Thông báo",
@@ -105,12 +106,13 @@ namespace NHOM9
                      MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
+            SetObjectState();
         }
         private void btnsua_Click(object sender, RoutedEventArgs e)
         {
             SetObjectState(true);
             isNew = false;
-            txtidphongban.Focus();
+            txtmaphongban.Focus();
         }
         private void SetObjectState(bool Editing = false)
         {
@@ -129,7 +131,7 @@ namespace NHOM9
         {
             SetObjectState(true);
             isNew = true;
-            txtidphongban.Focus();
+            txtmaphongban.Focus();
         }
 
         private void btboqua_Click(object sender, RoutedEventArgs e)
@@ -139,19 +141,19 @@ namespace NHOM9
         private void btnreset_Click(object sender, EventArgs e)
         {
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblPhongBan").DefaultView;
-            txtidphongban.Clear();
+            
             txtmaphongban.Clear();
             txttenphongban.Clear();
             txtdiachi.Clear();
             txtghichu.Clear();
-            txtidphongban.Focus();
+            txtmaphongban.Focus();
         }
         
         private void btnxoa_Click(object sender, EventArgs e)
         {
             try
             {
-                string sql = "delete from tblPhongBan where ID_PhongBan=" + txtidphongban.Text + "";
+                string sql = "delete from tblPhongBan where ID_PhongBan=" + sID + "";
 
                 CapNhat(sql);
                 MessageBox.Show("Đã xóa", "Thông báo",
@@ -168,8 +170,8 @@ namespace NHOM9
         {
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblPhongBan").DefaultView;
 
-
-            dgvMain.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[0].Visibility = Visibility.Collapsed; // Ẩn cột ; 
+           
             dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
             dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
             dgvMain.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
@@ -190,7 +192,7 @@ namespace NHOM9
             {
                 btnxoa.IsEnabled = false;
                 btnsua.IsEnabled = false;
-                txtidphongban.Text = "";
+                
                 txtmaphongban.Text = "";
                 txttenphongban.Text = "";
                 txtdiachi.Text = "";
@@ -198,11 +200,12 @@ namespace NHOM9
                 return;
             }
 
-            txtidphongban.Text = obj["ID_PhongBan"]?.ToString();
+           
             txtmaphongban.Text = obj["Ma_PhongBan"]?.ToString();
             txttenphongban.Text = obj["Ten_PhongBan"]?.ToString();
             txtdiachi.Text = obj["Dia_Chi"]?.ToString();
             txtghichu.Text = obj["Ghi_Chu"]?.ToString();
+            sID = obj["ID_PhongBan"].ToString();
         }
 
         private void button6_Click(object sender, RoutedEventArgs e)

@@ -96,16 +96,14 @@
                 </Style>
             </DataGrid.ColumnHeaderStyle>
         </DataGrid>
-        <Label Content="Tìm kiếm" HorizontalAlignment="Left" Margin="8,330,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman"/>
-        <Label Content="ID Chức Vụ" HorizontalAlignment="Left" Margin="9,366,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman"/>
-        <TextBox x:Name="txtidchucvu" HorizontalAlignment="Left" Margin="137,370,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="541" Height="23" HorizontalContentAlignment="Left" IsEnabled="True" FontFamily="Times New Roman"/>
-        <Label Content="Mã Chức Vụ" HorizontalAlignment="Left" Margin="10,406,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.091,0.502" Width="96" FontFamily="Times New Roman"/>
-        <TextBox x:Name="txtmachucvu" HorizontalAlignment="Left" Margin="137,407,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="541" HorizontalContentAlignment="Left" Height="23" FontFamily="Times New Roman"/>
-        <Label Content="Tên Chức Vụ" HorizontalAlignment="Left" Margin="9,442,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.517,1.242" Width="96" FontFamily="Times New Roman"/>
-        <TextBox x:Name="txttenchucvu" HorizontalAlignment="Left" Margin="137,444,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="541" Height="23" FontFamily="Times New Roman"/>
-        <Label Content="Ghi Chú" HorizontalAlignment="Left" Margin="10,479,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman"/>
+        <Label Content="Tìm kiếm" HorizontalAlignment="Left" Margin="8,330,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman" Height="30"/>
+        <Label Content="Mã Chức Vụ" HorizontalAlignment="Left" Margin="10,380,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.091,0.502" Width="96" FontFamily="Times New Roman" Height="30"/>
+        <TextBox x:Name="txtmachucvu" HorizontalAlignment="Left" Margin="136,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="541" HorizontalContentAlignment="Left" Height="30" FontFamily="Times New Roman"/>
+        <Label Content="Tên Chức Vụ" HorizontalAlignment="Left" Margin="10,426,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.517,1.242" Width="96" FontFamily="Times New Roman" Height="30"/>
+        <TextBox x:Name="txttenchucvu" HorizontalAlignment="Left" Margin="136,426,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="541" Height="30" FontFamily="Times New Roman"/>
+        <Label Content="Ghi Chú" HorizontalAlignment="Left" Margin="10,479,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman" Height="32"/>
         <TextBox x:Name="txtghichu" HorizontalAlignment="Left" Margin="137,479,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="541" Height="79" FontFamily="Times New Roman"/>
-        <ComboBox x:Name="cbhoten" HorizontalAlignment="Left" Margin="137,330,0,0" VerticalAlignment="Top" Width="541" SelectionChanged="cbhoten_SelectionChanged" Height="23" FontFamily="Times New Roman"/>
+        <ComboBox x:Name="cbhoten" HorizontalAlignment="Left" Margin="137,330,0,0" VerticalAlignment="Top" Width="541" SelectionChanged="cbhoten_SelectionChanged" Height="30" FontFamily="Times New Roman"/>
 
         <Button x:Name="button2" Content="Reset" HorizontalAlignment="Left" Margin="284,577,0,0" VerticalAlignment="Top" Height="30" Width="95" Click="button2_Click" FontFamily="Times New Roman" FontWeight="Bold" Foreground="#FF0600FF"/>
 

@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WFB4;
-
+using System.Security.Cryptography;
 namespace NHOM9
 {
     /// <summary>
@@ -43,6 +43,7 @@ namespace NHOM9
             }
         }
         string sID = "";
+        
         public frmTaiKhoan()
         {
             InitializeComponent();
@@ -50,7 +51,7 @@ namespace NHOM9
         private void CapNhat(string sql)
         {
             TruyXuatCSDL.ThemSuaXoa(sql);
-            dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblTaiKhoan").DefaultView; ;
+            dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select id,Ten_TKhoan,Mat_khau,Loai_TKhoan from tblTaiKhoan").DefaultView; ;
             UpdateHeaderNames();
         }
         private void UpdateHeaderNames()
@@ -60,20 +61,58 @@ namespace NHOM9
             dgvMain.Columns[2].Header = "Mật khẩu ";
             dgvMain.Columns[3].Header = "Loại tài khoản ";
         }
+        private void LoadData()
+        {
+            dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select id, Ten_TKhoan, Mat_khau, Loai_TKhoan from tblTaiKhoan").DefaultView;
+
+            dgvMain.Columns[0].Visibility = Visibility.Collapsed; // Ẩn cột ; 
+            dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+
+            UpdateHeaderNames();
+
+            bbtXoa.IsEnabled = false;
+            btSua.IsEnabled = false;
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadData();
+        }
+
+        private string MaHoaMatKhau(string matkhau)
+        {
+            using (SHA256 sha256 = new SHA256Managed())
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(matkhau);
+                byte[] hash = sha256.ComputeHash(bytes);
+                return Convert.ToBase64String(hash);
+            }
+        }
+        private void anma(object sender, RoutedEventArgs e)
+        {
+            LoadData();
+            btthemmoi_Copy.Visibility = Visibility.Visible;
+        }
+
+        private void mahoa(object sender, RoutedEventArgs e)
+        {
+            CapNhatBangDuLieu();
+            btthemmoi_Copy.Visibility = Visibility.Hidden;
+        }
+        private void CapNhatBangDuLieu()
         {
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblTaiKhoan").DefaultView;
 
-            if (dgvMain.Columns.Count >= 4)
-            {
-                dgvMain.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-                dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-                dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-                dgvMain.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-                UpdateHeaderNames();
-                bbtXoa.IsEnabled = false;
-                btSua.IsEnabled = false;
-            }
+            dgvMain.Columns[0].Visibility = Visibility.Collapsed; // Ẩn cột ; 
+            dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+
+            UpdateHeaderNames();
+
+            dgvMain.Columns[4].Header = "Mật khẩu được giải mã";
         }
 
 
@@ -83,8 +122,10 @@ namespace NHOM9
             {
                 try
                 {
-                    string sql = "insert into tblTaiKhoan values(N'" + txtTaiKhoan.Text + "', N'" + txtMatKhau.Password + "', " +
-                   "N'" + txtLoaiTaiKhoan.Text + "')";
+                    string matkhau = txtMatKhau.Password;
+                    string matkhauMaHoa = MaHoaMatKhau(matkhau);
+                    string sql = "insert into tblTaiKhoan values(N'" + txtTaiKhoan.Text + "', N'" + matkhauMaHoa + "', " +
+                   "N'" + txtLoaiTaiKhoan.Text + "', N'" + matkhau + "')";
                     CapNhat(sql);
                     MessageBox.Show("Đã thêm");
                 }
@@ -97,10 +138,11 @@ namespace NHOM9
             {
                 try
                 {
-
+                    string matkhau = txtMatKhau.Password;
+                    string matkhauMaHoa = MaHoaMatKhau(matkhau);
                     string sql = "update tblTaiKhoan set Ten_TKhoan=N'" + txtTaiKhoan.Text + "',Mat_Khau=N'"
                      + txtMatKhau.Password + "',Loai_TKhoan=N'"
-                     + txtLoaiTaiKhoan.Text + "' where id=" + sID;
+                     + txtLoaiTaiKhoan.Text + "', N'" + matkhau + "'where id=" + sID;
                     CapNhat(sql);
                     MessageBox.Show("Đã sửa");
                 }
@@ -108,6 +150,20 @@ namespace NHOM9
                 {
                     MessageBox.Show("Sửa Thất bại" + ex.Message);
                 }
+            }
+            SetObjectState();
+        }
+        private void bbtXoa_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string sql = "delete from tblTaiKhoan   where id=" + sID;
+                CapNhat(sql);
+                MessageBox.Show("Đã xóa");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Xóa Thất bại");
             }
         }
 
@@ -176,20 +232,7 @@ namespace NHOM9
         }
 
 
-        private void bbtXoa_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                string sql = "delete from tblTaiKhoan   where id=" + sID;
-
-                CapNhat(sql);
-                MessageBox.Show("Đã xóa");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Xóa Thất bại");
-            }
-        }
+       
 
         private void btTroVe_Click(object sender, RoutedEventArgs e)
         {
@@ -258,7 +301,7 @@ namespace NHOM9
             NV.Owner = Application.Current.MainWindow;
             NV.Show();
         }
-
+        
         private void MenuItem_Click_4(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -266,5 +309,7 @@ namespace NHOM9
             PB.Owner = Application.Current.MainWindow;
             PB.Show();
         }
+
+        
     }
 }

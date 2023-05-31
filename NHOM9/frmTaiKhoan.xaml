@@ -87,16 +87,16 @@
                 </MenuItem.Padding>
             </MenuItem>
         </Menu>
-        <DataGrid x:Name="dgvMain" Margin="299,77,28.6,107" SelectionChanged="dgvMain_SelectionChanged" FontFamily="Times New Roman">
+        <DataGrid x:Name="dgvMain" HorizontalAlignment="Left" Margin="299,77,0,0"  VerticalAlignment="Top" SelectionChanged="dgvMain_SelectionChanged" FontFamily="Times New Roman" Height="242" Width="466">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="HorizontalContentAlignment" Value="Center" />
                 </Style>
             </DataGrid.ColumnHeaderStyle>
         </DataGrid>
-        <Label Content="Tài khoản" HorizontalAlignment="Left" Margin="18,87,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman" Height="25"/>
-        <Label Content="Mật khẩu" HorizontalAlignment="Left" Margin="18,194,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman" Height="26"/>
-        <Label Content="Loại tài khoản" HorizontalAlignment="Left" Margin="18,293,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman" Height="26"/>
+        <Label Content="Tài khoản" HorizontalAlignment="Left" Margin="18,77,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman" Height="25"/>
+        <Label Content="Mật khẩu" HorizontalAlignment="Left" Margin="18,185,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman" Height="26"/>
+        <Label Content="Loại tài khoản" HorizontalAlignment="Left" Margin="18,285,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman" Height="26"/>
         <TextBox x:Name="txtTaiKhoan" HorizontalAlignment="Left" Margin="131,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" FontFamily="Times New Roman" Height="35"/>
         <PasswordBox x:Name="txtMatKhau" HorizontalAlignment="Left" Margin="131,185,0,0" VerticalAlignment="Top" Width="133" FontFamily="Times New Roman" Height="35"/>
         <TextBox x:Name="txtLoaiTaiKhoan" HorizontalAlignment="Left" Margin="131,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" FontFamily="Times New Roman" Height="34"/>
@@ -108,6 +108,9 @@
         <Button x:Name="btTroVe" Content="Trở về" HorizontalAlignment="Left" Margin="670,358,0,0" VerticalAlignment="Top" Width="95" Click="btTroVe_Click" FontFamily="Times New Roman" Height="30" FontWeight="Bold" Background="#FFDDDDDD" BorderBrush="{x:Null}" Foreground="#FF0071FF"/>
         <Label Content="Danh sách tài khoản" HorizontalAlignment="Left" Margin="301,47,0,0" VerticalAlignment="Top" Width="141" Height="26" FontFamily="Times New Roman"/>
         <Button x:Name="btthemmoi" Content="Thêm" HorizontalAlignment="Left" Margin="299,358,0,0" VerticalAlignment="Top" Width="95" Height="30" FontFamily="Times New Roman" FontWeight="Bold" Click="btthemmoi_Click" Background="#FFDDDDDD" BorderBrush="{x:Null}" Foreground="#FF0071FF"/>
+        <Button x:Name="btthemmoi_Copy1" Content="Ẩn" HorizontalAlignment="Left" Margin="18,358,0,0" VerticalAlignment="Top" Width="95" Height="30" FontFamily="Times New Roman" FontWeight="Bold" Click="anma" Background="#FFDDDDDD" BorderBrush="{x:Null}" Foreground="#FF0071FF"/>
+        <Button x:Name="btthemmoi_Copy" Content="Hiện" HorizontalAlignment="Left" Margin="19,358,0,0" VerticalAlignment="Top" Width="95" Height="30" FontFamily="Times New Roman" FontWeight="Bold" Click="mahoa" Background="#FFDDDDDD" BorderBrush="{x:Null}" Foreground="#FF0071FF"/>
+        
 
     </Grid>
 </Window>

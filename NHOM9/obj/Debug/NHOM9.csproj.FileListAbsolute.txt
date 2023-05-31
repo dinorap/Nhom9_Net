@@ -104,3 +104,5 @@ C:\Users\dminh\Desktop\Nhom9.Net\NHOM9\obj\Debug\NHOM9.csproj.CoreCompileInputs.
 C:\Users\dminh\Desktop\Nhom9.Net\NHOM9\obj\Debug\NHOM9.csproj.CopyComplete
 C:\Users\dminh\Desktop\Nhom9.Net\NHOM9\obj\Debug\NHOM9.exe
 C:\Users\dminh\Desktop\Nhom9.Net\NHOM9\obj\Debug\NHOM9.pdb
+C:\Users\dminh\Desktop\Nhom9.Net\NHOM9\obj\Debug\dangky.g.cs
+C:\Users\dminh\Desktop\Nhom9.Net\NHOM9\obj\Debug\dangky.baml
