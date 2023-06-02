@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
 using System.Collections;
+
 namespace WFB4
 {
     internal class TruyXuatCSDL
@@ -47,6 +48,7 @@ namespace WFB4
             KetNoi.Close();
             Lenh.Dispose();
         }
+
         // lấy một giá trị dữ liệu ra 
         public object executeScalar(string sql)
         {

@@ -108,7 +108,7 @@
             <Label Content="Số Nhân Viên" HorizontalAlignment="Left" Margin="10,381,0,0" VerticalAlignment="Top" FontFamily="Times New Roman"/>
             <TextBox x:Name="txtso" HorizontalAlignment="Left" Margin="112,385,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="559" FontFamily="Times New Roman" Grid.ColumnSpan="2"/>
             <Label Content="Mô tả" HorizontalAlignment="Left" Margin="10,415,0,0" VerticalAlignment="Top" FontFamily="Times New Roman"/>
-            <TextBox x:Name="txtchuthich" HorizontalAlignment="Left" Margin="112,420,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="559" Height="80" FontFamily="Times New Roman" Grid.ColumnSpan="2" Foreground="#FF003AFF"/>
+            <TextBox x:Name="txtchuthich" HorizontalAlignment="Left" Margin="112,420,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="559" Height="80" FontFamily="Times New Roman" Grid.ColumnSpan="2" Foreground="#FF090909"/>
             <Button x:Name="btnreset" Content="Reset" HorizontalAlignment="Left" Margin="287,529,0,0" VerticalAlignment="Top" Height="30" Width="95" Click="btnreset_Click" RenderTransformOrigin="1.192,3.62" FontFamily="Times New Roman" FontWeight="Bold" Foreground="#FF0056FF"/>
             <Button x:Name="btboqua" Content="Bỏ Qua" HorizontalAlignment="Left" Margin="34,529,0,0" VerticalAlignment="Top" Width="95" Height="30" FontFamily="Times New Roman" FontWeight="Bold" Click="btboqua_Click" Grid.Column="1" Foreground="#FF0056FF"/>
             <Button x:Name="btnthem" Content="Cập nhật" HorizontalAlignment="Left" Margin="146,529,0,0" VerticalAlignment="Top" Height="30" Width="95" Click="btnthem_Click" FontFamily="Times New Roman" FontWeight="Bold" Foreground="#FF0056FF"/>

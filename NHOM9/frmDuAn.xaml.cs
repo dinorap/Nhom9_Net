@@ -105,6 +105,11 @@ namespace NHOM9
         {
             TruyXuatCSDL.ThemSuaXoa(sql);
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblDuAn").DefaultView;
+            dgvMain.Columns[0].Visibility = Visibility.Collapsed; // Ẩn cột ; 
+            dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
             UpdateHeaderNames();
         }
         private void btnthem_Click(object sender, RoutedEventArgs e)
@@ -113,6 +118,11 @@ namespace NHOM9
             {
                 try
                 {
+                    if (string.IsNullOrEmpty(txtid.Text) || string.IsNullOrEmpty(txtten.Text) || string.IsNullOrEmpty(txtso.Text))
+                    {
+                        MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                        return;
+                    }
                     string sql = "insert into tblDuAn values(N'" + txtid.Text + "', N'" + txtten.Text + "', " +
                    "N'" + txtso.Text + "', N'" + txtchuthich.Text + "')";
                     CapNhat(sql);
@@ -127,6 +137,11 @@ namespace NHOM9
             {
                 try
                 {
+                    if (string.IsNullOrEmpty(txtid.Text) || string.IsNullOrEmpty(txtten.Text) || string.IsNullOrEmpty(txtso.Text) )
+                    {
+                        MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                        return;
+                    }
                     string sql = "update tblDuAn set ma_Da=N'" + txtid.Text + "',name_Da=N'" + txtten.Text + "',sonv_Da=" + txtso.Text + ", mota_Da=N'" + txtchuthich.Text + "' where id_Da=N'" + sID + "'";
 
                     CapNhat(sql);

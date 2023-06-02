@@ -33,7 +33,6 @@ namespace NHOM9
             }
             else
             {
-
                 mniDanhMuc.Visibility = Visibility.Visible;
                 mi_QLHT.Visibility = Visibility.Visible;
                 mi_QLHS.Visibility = Visibility.Visible;
@@ -146,7 +145,7 @@ namespace NHOM9
         private void mi_QLTK_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            frmTaiKhoan TK = new frmTaiKhoan();
+            frmTaiKhoan TK = new frmTaiKhoan(LoaiTKhoan);
             TK.Owner = Application.Current.MainWindow;
             TK.Show();
         }
@@ -154,7 +153,7 @@ namespace NHOM9
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            frmChucVu CV = new frmChucVu();
+            frmChucVu CV = new frmChucVu(LoaiTKhoan);
             CV.Owner = Application.Current.MainWindow;
             CV.Show();
         }
@@ -162,7 +161,7 @@ namespace NHOM9
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
-            frmDuAn DA = new frmDuAn();
+            frmDuAn DA = new frmDuAn(LoaiTKhoan);
             DA.Owner = Application.Current.MainWindow;
             DA.Show();
         }
@@ -170,7 +169,7 @@ namespace NHOM9
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             this.Close();
-            frmThongKe TK = new frmThongKe();
+            frmThongKe TK = new frmThongKe(LoaiTKhoan);
             TK.Owner = Application.Current.MainWindow;
             TK.Show();
         }
@@ -210,7 +209,7 @@ namespace NHOM9
         private void MenuItem_Click_4(object sender, RoutedEventArgs e)
         {
             this.Close();
-            frmPhongBan PB = new frmPhongBan();
+            frmPhongBan PB = new frmPhongBan(LoaiTKhoan);
             PB.Owner = Application.Current.MainWindow;
             PB.Show();
         }

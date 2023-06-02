@@ -52,6 +52,12 @@ namespace NHOM9
         {
             TruyXuatCSDL.ThemSuaXoa(sql);
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select id,Ten_TKhoan,Mat_khau,Loai_TKhoan from tblTaiKhoan").DefaultView; ;
+     
+
+            dgvMain.Columns[0].Visibility = Visibility.Collapsed; // Ẩn cột ; 
+            dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
             UpdateHeaderNames();
         }
         private void UpdateHeaderNames()
@@ -114,7 +120,22 @@ namespace NHOM9
 
             dgvMain.Columns[4].Header = "Mật khẩu được giải mã";
         }
+        TruyXuatCSDL truyxuat1 = new TruyXuatCSDL();//
+        private bool TaiKhoanDaTonTai(string tenTaiKhoan)
+        {
+            string sql = "SELECT COUNT(*) FROM tblTaiKhoan WHERE Ten_TKhoan = N'" + tenTaiKhoan + "'";
 
+            // Assuming you have a method named 'executeScalar' that executes the SQL command and returns the result as an object
+            object result = truyxuat1.executeScalar(sql);
+
+            int count = 0;
+            if (result != null && int.TryParse(result.ToString(), out count))
+            {
+                return count > 0;
+            }
+
+            return false;
+        }
 
         private void btThem_Click(object sender, RoutedEventArgs e)
         {
@@ -123,15 +144,39 @@ namespace NHOM9
                 try
                 {
                     string matkhau = txtMatKhau.Password;
+                    if (string.IsNullOrEmpty(txtTaiKhoan.Text) || string.IsNullOrEmpty(matkhau) || string.IsNullOrEmpty(txtLoaiTaiKhoan.Text))
+                    {
+                        MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                        return;
+                    }
+
+                    if (matkhau.Length < 8 || !matkhau.Any(char.IsDigit) || !matkhau.Any(char.IsLetter))
+                    {
+                        MessageBox.Show("Mật khẩu phải có ít nhất 8 ký tự và bao gồm cả chữ và số");
+                        return;
+                    }//
+                    if (TaiKhoanDaTonTai(txtTaiKhoan.Text))
+                    {
+                        MessageBox.Show("Tên tài khoản đã tồn tại");
+                        return;
+                    }
+
+                    int loaiTaiKhoan;
+                    if (!int.TryParse(txtLoaiTaiKhoan.Text, out loaiTaiKhoan) || (loaiTaiKhoan != 0 && loaiTaiKhoan != 1))
+                    {
+                        MessageBox.Show("Loại tài khoản chỉ chấp nhận giá trị 0 hoặc 1");
+                        return;
+                    }
+
                     string matkhauMaHoa = MaHoaMatKhau(matkhau);
                     string sql = "insert into tblTaiKhoan values(N'" + txtTaiKhoan.Text + "', N'" + matkhauMaHoa + "', " +
-                   "N'" + txtLoaiTaiKhoan.Text + "', N'" + matkhau + "')";
+                        "N'" + txtLoaiTaiKhoan.Text + "', N'" + matkhau + "')";
                     CapNhat(sql);
                     MessageBox.Show("Đã thêm");
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Thêm Thất bại");
+                    MessageBox.Show("Thêm thất bại");
                 }
             }
             else
@@ -139,20 +184,47 @@ namespace NHOM9
                 try
                 {
                     string matkhau = txtMatKhau.Password;
+                    if (string.IsNullOrEmpty(txtTaiKhoan.Text) || string.IsNullOrEmpty(matkhau) || string.IsNullOrEmpty(txtLoaiTaiKhoan.Text))
+                    {
+                        MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                        return;
+                    }
+
+                    if (matkhau.Length < 8 || !matkhau.Any(char.IsDigit) || !matkhau.Any(char.IsLetter))
+                    {
+                        MessageBox.Show("Mật khẩu phải có ít nhất 8 ký tự và bao gồm cả chữ và số");
+                        return;
+                    }//
+                    if (TaiKhoanDaTonTai(txtTaiKhoan.Text))
+                    {
+                        MessageBox.Show("Tên tài khoản đã tồn tại");
+                        return;
+                    }
+
+                    int loaiTaiKhoan;
+                    if (!int.TryParse(txtLoaiTaiKhoan.Text, out loaiTaiKhoan) || (loaiTaiKhoan != 0 && loaiTaiKhoan != 1))
+                    {
+                        MessageBox.Show("Loại tài khoản chỉ chấp nhận giá trị 0 hoặc 1");
+                        return;
+                    }
+
                     string matkhauMaHoa = MaHoaMatKhau(matkhau);
                     string sql = "update tblTaiKhoan set Ten_TKhoan=N'" + txtTaiKhoan.Text + "',Mat_Khau=N'"
-                     + txtMatKhau.Password + "',Loai_TKhoan=N'"
-                     + txtLoaiTaiKhoan.Text + "', N'" + matkhau + "'where id=" + sID;
+                        + matkhauMaHoa + "',Loai_TKhoan=N'"
+                        + txtLoaiTaiKhoan.Text + "', MK=N'" + matkhau + "'where id=" + sID;
                     CapNhat(sql);
                     MessageBox.Show("Đã sửa");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Sửa Thất bại" + ex.Message);
+                    MessageBox.Show("Sửa thất bại" + ex.Message);
                 }
             }
             SetObjectState();
         }
+
+
+
         private void bbtXoa_Click(object sender, RoutedEventArgs e)
         {
             try

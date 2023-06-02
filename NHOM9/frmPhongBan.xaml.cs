@@ -63,6 +63,12 @@ namespace NHOM9
         {
             TruyXuatCSDL.ThemSuaXoa(sql);
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblPhongBan").DefaultView;
+            dgvMain.Columns[0].Visibility = Visibility.Collapsed; // Ẩn cột ; 
+
+            dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            dgvMain.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
             UpdateHeaderNames();
         }
         
@@ -77,6 +83,11 @@ namespace NHOM9
             {
                 try
                 {
+                    if (string.IsNullOrEmpty(txtmaphongban.Text) || string.IsNullOrEmpty(txttenphongban.Text) || string.IsNullOrEmpty(txtdiachi.Text) || string.IsNullOrEmpty(txtghichu.Text))
+                    {
+                        MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                        return;
+                    }
                     string sql = "insert into tblPhongBan values(N'" + txtmaphongban.Text + "', " +
                    "N'" + txttenphongban.Text + "', N'" + txtdiachi.Text + "', N'" + txtghichu.Text + "')";
                     CapNhat(sql);
@@ -93,6 +104,11 @@ namespace NHOM9
             {
                 try
                 {
+                    if (string.IsNullOrEmpty(txtmaphongban.Text) || string.IsNullOrEmpty(txttenphongban.Text) || string.IsNullOrEmpty(txtdiachi.Text) || string.IsNullOrEmpty(txtghichu.Text))
+                    {
+                        MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                        return;
+                    }
                     string sql = "update tblPhongBan set Ma_PhongBan=N'" + txtmaphongban.Text + "',Ten_PhongBan=N'"
                      + txttenphongban.Text + "',Dia_Chi=N'" + txtdiachi.Text + "', Ghi_chu=N'" + txtghichu.Text + "' where ID_PhongBan=" + sID + "";
 

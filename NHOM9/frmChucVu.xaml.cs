@@ -131,6 +131,11 @@ namespace NHOM9
             {
                 try
                 {
+                    if (string.IsNullOrEmpty(txtmachucvu.Text) || string.IsNullOrEmpty(txttenchucvu.Text) || string.IsNullOrEmpty(txtghichu.Text))
+                    {
+                        MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                        return;
+                    }
                     string sql = "insert into tblChuVu values(N'" + txtmachucvu.Text + "', " +
                    "N'" + txttenchucvu.Text + "', N'" + txtghichu.Text + "')";
                     CapNhat(sql);
@@ -145,6 +150,11 @@ namespace NHOM9
             {
                 try
                 {
+                    if (string.IsNullOrEmpty(txtmachucvu.Text) || string.IsNullOrEmpty(txttenchucvu.Text) || string.IsNullOrEmpty(txtghichu.Text))
+                    {
+                        MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                        return;
+                    }
                     string sql = "update tblChuVu set Ma_ChucVu=N'" + txtmachucvu.Text + "',Ten_ChuVu=N'"
                      + txttenchucvu.Text + "', Ghi_Chu=N'" + txtghichu.Text + "' where ID_ChucVu=" + sID + "";
 
@@ -254,7 +264,14 @@ namespace NHOM9
         {
             TruyXuatCSDL.ThemSuaXoa(sql);
             dgvMain.ItemsSource = TruyXuatCSDL.Laybang("select * from tblChuVu").DefaultView;
+            dgvMain.Columns[0].Visibility = Visibility.Collapsed; // Ẩn cột ; 
+            dgvMain.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvMain.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+
+            // cột cuối cùng tự động căn chỉnh kích thước theo chiều rộng còn lại của DataGrid
+            dgvMain.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
             UpdateHeaderNames();
+            
         }
 
         private void btthemmoi_Click(object sender, RoutedEventArgs e)

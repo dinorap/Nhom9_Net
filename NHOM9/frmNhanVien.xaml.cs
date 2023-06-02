@@ -119,6 +119,14 @@ namespace NHOM9
 
                 try
                 {
+                    if (string.IsNullOrEmpty(txtidnhanvien.Text) || string.IsNullOrEmpty(cbmachuvu.Text) || string.IsNullOrEmpty(cbtenphongban.Text) || string.IsNullOrEmpty(txthoten.Text)
+                        || string.IsNullOrEmpty(dtpngaysinh.Text) || string.IsNullOrEmpty(txtgioitinh.Text) || string.IsNullOrEmpty(txtquequan.Text)
+                        || string.IsNullOrEmpty(txtsocmt.Text) || string.IsNullOrEmpty(txtluong.Text) || string.IsNullOrEmpty(txtsodienthoai.Text)
+                        || string.IsNullOrEmpty(txtsotaikhoan.Text) || string.IsNullOrEmpty(dtpngaytao.Text))
+                    {
+                        MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                        return;
+                    }
                     string sql = "insert into tblNhanVien values(" + txtidnhanvien.Text + ",N'" + cbmachuvu.Text + "',N'" + cbtenphongban.Text + "',N'" + txthoten.Text + "'," +
                                 "N'" + dtpngaysinh.Text + "',N'" + txtgioitinh.Text + "',N'" + txtquequan.Text + "',N'" + txtsocmt.Text + "'," + txtluong.Text + ",N'" + txtsodienthoai.Text + "',N'" + txtsotaikhoan.Text + "',N'" + dtpngaytao.Text + "')";
                     CapNhat(sql);
@@ -138,9 +146,17 @@ namespace NHOM9
                 string phongban = "Select Ma_PhongBan from tblPhongBan where Ten_PhongBan='" + cbtenphongban.Text.ToString() + "'";
                 try
                 {
+                    if (string.IsNullOrEmpty(txtidnhanvien.Text) || string.IsNullOrEmpty(cbmachuvu.Text) || string.IsNullOrEmpty(cbtenphongban.Text) || string.IsNullOrEmpty(txthoten.Text)
+                       || string.IsNullOrEmpty(dtpngaysinh.Text) || string.IsNullOrEmpty(txtgioitinh.Text) || string.IsNullOrEmpty(txtquequan.Text)
+                       || string.IsNullOrEmpty(txtsocmt.Text) || string.IsNullOrEmpty(txtluong.Text) || string.IsNullOrEmpty(txtsodienthoai.Text)
+                       || string.IsNullOrEmpty(txtsotaikhoan.Text) || string.IsNullOrEmpty(dtpngaytao.Text))
+                    {
+                        MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                        return;
+                    }
                     string sql = "update tblNhanVien set Ma_ChucVu=N'" + cbmachuvu.Text + "',Ten_PhongBan=N'" + cbtenphongban.Text + "',ID_NhanVien=N'" + txtidnhanvien.Text + "', Ho_Ten=N'" + txthoten.Text + "'" +
                         ",Ngay_Sinh=N'" + dtpngaysinh.Text + "',Gioi_Tinh=N'" + txtgioitinh.Text + "',Que_Quan=N'" + txtquequan.Text + "',So_CMT=N'" + txtsocmt.Text + "'," +
-                        "Luong=" + txtluong.Text + ",So_DienThoai=N'" + txtsodienthoai.Text + "',So_TK=N'" + txtsotaikhoan.Text + "',Ngay_Tao=N'" + dtpngaytao.Text + "' where ID_NhanVien=" + txtidnhanvien.Text + "";
+                        "Luong=" + txtluong.Text + ",So_DienThoai=N'" + txtsodienthoai.Text + "',So_TK=N'" + txtsotaikhoan.Text + "',Ngay_Tao=N'" + dtpngaytao.Text + "' where ID_NhanVien=" + sID + "";
                     CapNhat(sql);
                     MessageBox.Show("Đã sửa", "Thông báo",
                         MessageBoxButton.OK, MessageBoxImage.Information);
@@ -354,7 +370,7 @@ namespace NHOM9
             isNew = false;
             txtidnhanvien.Focus();
         }
-
+        string sID;
         private void dgvMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // thiết lập giá trị của các textbox tương ứng với thông tin của nhân viên đầu tiên
@@ -391,9 +407,10 @@ namespace NHOM9
                 }
                
                     dtpngaytao.Text = rowView[11]?.ToString();
-               
-                    // Lấy giá trị của chức vụ và phòng ban từ dòng được chọn
-                    string chucVu = rowView[1]?.ToString();
+                    sID = rowView["ID_NhanVIen"].ToString();
+
+                // Lấy giá trị của chức vụ và phòng ban từ dòng được chọn
+                string chucVu = rowView[1]?.ToString();
                     string tenPhongBan = rowView[2]?.ToString();
 
                     // Populate ComboBoxes

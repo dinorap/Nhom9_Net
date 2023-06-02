@@ -103,7 +103,7 @@
         <Label Content="Lương" HorizontalAlignment="Left" Height="46" Margin="565,200,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman"/>
         <Label Content=" Số điện thoại&#xD;&#xA;" HorizontalAlignment="Left" Height="44" Margin="565,280,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman"/>
         <Label Content="Số tài khoản" HorizontalAlignment="Left" Height="46" Margin="565,366,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman"/>
-        <Label Content="Ngày tạo" HorizontalAlignment="Left" Height="44" Margin="565,446,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman"/>
+        <Label Content="Ngày vào làm" HorizontalAlignment="Left" Height="44" Margin="565,446,0,0" VerticalAlignment="Top" Width="96" FontFamily="Times New Roman"/>
         <TextBox x:Name="txtidnhanvien" HorizontalAlignment="Left" Height="40" Margin="131,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="282" FontFamily="Times New Roman"/>
         <TextBox x:Name="txtquequan" HorizontalAlignment="Left" Height="40" Margin="666,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="282" FontFamily="Times New Roman"/>
         <TextBox x:Name="txtsocmt" HorizontalAlignment="Left" Height="40" Margin="666,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="282" FontFamily="Times New Roman"/>

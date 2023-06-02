@@ -42,38 +42,49 @@ namespace NHOM9
                 TruyXuatCSDL ac = new TruyXuatCSDL();
                 string tk = txtTenTKhoan.Text;
                 string mk = MaHoaMatKhau(txtMatKhau.Password); // Mã hóa mật khẩu
-                string sql = "select Loai_TKhoan from [tblTaiKhoan] where Ten_TKhoan = N'" + tk + "' and Mat_Khau = N'" + mk + "'";
-                object kq = ac.executeScalar(sql);
-                if (kq.ToString() == "1")
+
+                // Kiểm tra nếu có thông tin tài khoản và mật khẩu
+                if (!string.IsNullOrEmpty(txtTenTKhoan.Text) && !string.IsNullOrEmpty(txtMatKhau.Password))
                 {
-                    MessageBox.Show("Chào mừng user !!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-                    frmMain main = new frmMain(kq.ToString());
-                    
-                    main.Show();
-                    this.Hide();
-                }
-                else if (kq.ToString() == "0")
-                {
-                    MessageBox.Show("Chào mừng Admin !!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-                   
-                    frmMain main = new frmMain(kq.ToString());
-                                
-                    main.Show();
-                    this.Hide();
+                    string sql = "select Loai_TKhoan from [tblTaiKhoan] where Ten_TKhoan = N'" + tk + "' and Mat_Khau = N'" + mk + "'";
+                    object kq = ac.executeScalar(sql);
+
+                    if (kq.ToString() == "1")
+                    {
+                        MessageBox.Show("Chào mừng user !!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                        frmMain main = new frmMain(kq.ToString());
+
+                        main.Show();
+                        this.Hide();
+                    }
+                    else if (kq.ToString() == "0")
+                    {
+                        MessageBox.Show("Chào mừng Admin !!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                        frmMain main = new frmMain(kq.ToString());
+
+                        main.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Đăng nhập thất bại", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtTenTKhoan.SelectAll();
+                        txtMatKhau.Clear();
+                        txtTenTKhoan.Focus();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Đăng nhập thất bại", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
-                    txtTenTKhoan.SelectAll();
-                    txtMatKhau.Clear();
-                    txtTenTKhoan.Focus();
+                    MessageBox.Show("Vui lòng nhập đủ thông tin tài khoản và mật khẩu", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
-
             }
             catch (Exception ex)
             {
+                // Xử lý ngoại lệ
             }
         }
+
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
